@@ -1,8 +1,5 @@
 
 /*
-
--BASE GAME EXAMPLE-
-
 respuesta1 = "tornasol"
 respuesta2 = "rabanasta"
 respuesta3 = "fran"

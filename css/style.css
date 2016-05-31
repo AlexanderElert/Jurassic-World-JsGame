@@ -1,166 +1,172 @@
 @font-face {
-  font-family: Jurassic-Park;
-  src: local("Jurassic-Park"),
-  local("Jurassic-Park"),
-  url(../fonts/Jurassic-Park.ttf);
-  font-weight: normal;
+    font-family: Jurassic-Park;
+    src: local("Jurassic-Park"), local("Jurassic-Park"), url(../fonts/Jurassic-Park.ttf);
+    font-weight: normal;
 }
 
 ::selection {
-background-color:rgba(252, 61, 61, 0.70);
-color:black;
+    background-color: rgba(252, 61, 61, 0.70);
+    color: black;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: "Montserrat";
-  text-align: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Montserrat";
+    text-align: center;
 }
 
-body, #background_video, #video_cover {
-  background-color: black;
+body,
+#background_video,
+#video_cover {
+    background-color: black;
 }
 
-#container, #background_video, #video_cover, #overlay, #footer {
-  position: absolute;
+#container,
+#background_video,
+#video_cover,
+#overlay,
+#footer {
+    position: absolute;
 }
 
 #container {
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
 }
 
 #background_video {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-filter: blur(4px) saturate(50%);
-  -o-filter: blur(4px) saturate(50%);
-  -ms-filter: blur(4px) saturate(50%);
-  filter: blur(4px) saturate(50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-filter: blur(4px) saturate(50%);
+    -o-filter: blur(4px) saturate(50%);
+    -ms-filter: blur(4px) saturate(50%);
+    filter: blur(4px) saturate(50%);
 }
 
 #video_cover {
-  width: 100%;
-  height: 100%;
-  background: url('film-preview.jpg') no-repeat;
-  background-size: cover;
-  background-position: center;
+    width: 100%;
+    height: 100%;
+    background: url('../multimedia/film-preview.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 #overlay {
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #main_content {
-  z-index: 2;
-  position: relative;
-  display: inline-block;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
 }
 
 #main_content h1 {
-  text-transform: uppercase;
-  color: white;
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 30px
-  margin:0;
+    text-transform: uppercase;
+    color: white;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 30px margin: 0;
 }
 
 #main_content h1 span {
-  text-transform: uppercase;
-  color: white;
-  font-size: 160px;
-  font-family: 'Jurassic-Park';
-  font-weight: 400;
-  line-height: 125px;
+    text-transform: uppercase;
+    color: white;
+    font-size: 160px;
+    font-family: 'Jurassic-Park';
+    font-weight: 400;
+    line-height: 125px;
 }
 
 #main_content .sub_head {
-  color: rgba(255, 255, 255, 0.60);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 588px;
+    text-align: justify;
 }
 
 #main_content .info {
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-top: 8px;
 }
 
 #links {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 #links p {
-  color: rgba(252, 61, 61, 0.70);
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 40px;
+    color: rgba(252, 61, 61, 0.70);
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 40px;
 }
 
 #links a {
-  border: 2px solid rgba(255, 255, 255, 0.20);
-  border-radius: 61px;
-  font-size: 12px;
-  color: #FFFFFF;
-  letter-spacing: 1px;
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 10px 25px;
-  display: inline-block;
-  margin-right: 5px;
-  -webkit-transition: 0.2s ease-out;
-  -mz-transition: 0.2s ease-out;
-  -o-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.20);
+    border-radius: 61px;
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    display: inline-block;
+    margin-right: 5px;
+    -webkit-transition: 0.2s ease-out;
+    -mz-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
 }
 
 #links a:last-child {
-  margin-right: 0px;
-  margin-left: 5px;
+    margin-right: 0px;
+    margin-left: 5px;
 }
 
 #links a:hover {
-  border: 2px solid rgba(252, 61, 61, 0.70);
-  color: rgb(252, 61, 61);
+    border: 2px solid rgba(252, 61, 61, 0.70);
+    color: rgb(252, 61, 61);
 }
 
 #footer {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.2);
-  font-family: 'Montserrat';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: 'Montserrat';
 }
 
 #footer a {
-  color: rgba(252, 61, 61, 0.50);
-  text-decoration: none;
-  font-size: 12px;
-  font-family: 'Montserrat';
+    color: rgba(252, 61, 61, 0.50);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Montserrat';
 }
