@@ -51,4 +51,25 @@ loop
 
 congratulations()
  */
+$('#jugar').click(function() {
+  return swal({
+    title: '',
+    text: '<div class="time-left"> <span>03</span>:<span>29</span>:<span>03</span> </div> <div class="score"> <span>1200</span><span>pts</span> </div> <div class="question-header"> <img src="multimedia/header-1.jpg"> </div> <p class="question">¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?</p> <div class="answers"> <input type="radio" name="gender" id="male" value="male"> <label for="male"><p class="answer">Moscas, Arañas y Delfines</p></label> <input type="radio" name="gender" id="female" value="female"> <label for="female"><p class="answer">Calamares, Ranas y Raptores</p></label> <input type="radio" name="gender" id="other" value="other"> <label for="other"><p class="answer">Tiranosaurus-Rex, Largartijas y Camaleones</p></label> </div>',
+    html: true
+  });
+});
 
+$('#records').click(function() {
+  swal({
+    title: 'Mejores puntajes',
+    text: '<div class="time-left"> <span>03</span>:<span>29</span>:<span>03</span> </div> <div class="score"> <span>1200</span><span>pts</span> </div> <div class="question-header"> <img src="multimedia/header-list.jpg"> </div> <p class="question">¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?</p> <div class="answers"> <input type="radio" name="gender" id="male" value="male"> <label for="male"><p class="answer">Moscas, Arañas y Delfines</p></label> <input type="radio" name="gender" id="female" value="female"> <label for="female"><p class="answer">Calamares, Ranas y Raptores</p></label> <input type="radio" name="gender" id="other" value="other"> <label for="other"><p class="answer">Tiranosaurus-Rex, Largartijas y Camaleones</p></label> </div>',
+    html: true
+  });
+  return $('button .confirm').click(function() {
+    return swal({
+      title: 'Mejores puntajes',
+      text: '<div class="time-left"> <span>03</span>:<span>29</span>:<span>03</span> </div> <div class="score"> <span>1200</span><span>pts</span> </div> <div class="question-header"> <img src="multimedia/header-list.jpg"> </div> <p class="question">¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?</p> <div class="answers"> <input type="radio" name="gender" id="male" value="male"> <label for="male"><p class="answer">Moscas, Arañas y Delfines</p></label> <input type="radio" name="gender" id="female" value="female"> <label for="female"><p class="answer">Calamares, Ranas y Raptores</p></label> <input type="radio" name="gender" id="other" value="other"> <label for="other"><p class="answer">Tiranosaurus-Rex, Largartijas y Camaleones</p></label> </div>',
+      html: true
+    });
+  });
+});
