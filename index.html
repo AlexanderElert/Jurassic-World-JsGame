@@ -18,7 +18,7 @@
         <video id="background_video" loop muted autoplay></video>
         <div id="video_cover"></div>
         <div id="overlay"></div>
-        <audio loop autoplay>
+        <audio loop autoplay muted>
             <source src="multimedia/soundtrack.mp3" type="audio/mpeg">
         </audio>
         <section id="main_content">
@@ -34,6 +34,40 @@
                 <a href="#jugar" id="jugar">Jugar</a>
                 <a href="#records" id="records">Ver Records</a>
             </div>
+        </section>
+
+        <div id="game-card-overlay" class="" tabindex="-1" style="opacity: 1.06; display: block;"></div>
+         <section id="game-card">
+           <div class="time-left">
+             <span></span><span>:</span><span></span>
+           </div>
+
+          <div class="score">
+            <span>0</span><span>pts</span>
+          </div>
+
+          <div class="question-header">
+
+          <img src="">
+
+          </div>
+
+          <p class="question"></p>
+
+          <div class="answers">
+
+          <input type="radio" name="opciones" id="A" value="A">
+          <label for="A"><p class="answer"></p></label>
+          <input type="radio" name="opciones" id="B" value="B">
+          <label for="B"><p class="answer"></p></label>
+          <input type="radio" name="opciones" id="C" value="C">
+          <label for="C"><p class="answer"></p></label>
+          <div class=".confirm-container">
+
+          <button id="confirm" tabindex="1">Siguiente</button>
+
+          </div>
+          </div>
         </section>
     </div>
     <div id="footer">
