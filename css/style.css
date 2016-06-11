@@ -33,6 +33,10 @@ body,
     background-color: black;
 }
 
+.audio {
+  display: none;
+}
+
 #container,
 #background_video,
 #video_cover,
@@ -62,10 +66,11 @@ text-transform:uppercase;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -webkit-filter: blur(4px) saturate(50%);
-    -o-filter: blur(4px) saturate(50%);
-    -ms-filter: blur(4px) saturate(50%);
-    filter: blur(4px) saturate(50%);
+    -webkit-filter: blur(4px) saturate(15%) hue-rotate(-345deg);
+    -o-filter: blur(4px) saturate(15%) hue-rotate(-345deg);
+    -ms-filter: blur(4px) saturate(15%) hue-rotate(-345deg);
+    filter: blur(4px) saturate(15%) hue-rotate(-345deg);
+
 }
 
 #video_cover {
@@ -171,16 +176,16 @@ text-transform:uppercase;
     right: 0;
     text-align: center;
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.20);
+    color: rgba(255, 255, 255, 0.40);
     height: 25px;
-    background: black;
+    /*background: black;*/
     padding-top: 25px;
-    bottom: 25px;
-    z-index: -2;
+    bottom: 0px;
+    z-index: 9999;
 }
 
 #footer a {
-    color: rgba(252, 61, 61, 0.50);
+    color: rgba(252, 61, 61, 0.70);
     text-decoration: none;
     font-size: 12px;
     font-family: 'Montserrat';
@@ -188,9 +193,9 @@ text-transform:uppercase;
 
 /* Sweet Alert Customize*/
 #game-card {
-    background-color: rgba(0, 0, 0, 0.65);
-    border-radius: 0px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     transition: 2s ease-out;
     z-index: 99999;
     overflow: hidden;
@@ -216,7 +221,9 @@ text-transform:uppercase;
     top: 0;
     background-repeat: no-repeat;
     background-size: cover;
-    -webkit-filter: blur(3px) saturate(30%);
+    -webkit-filter: blur(3px) saturate(15%);
+    opacity: 0.3;
+    display: block;
 }
 
 .card-bg-1::after {
@@ -242,12 +249,15 @@ text-transform:uppercase;
     background-color: rgba(0, 0, 0, 0.15);
     width: 100%;
     margin: 0px !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
     color: white;
     margin-top: 10px !important;
     font-size: 16px;
+    transition: 0.2s ease-out;
   }
+
+#game-card label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 #game-card input[type="radio"]:checked + label{
 background-color: rgba(255, 255, 255, 0.10);
@@ -266,7 +276,7 @@ color:white;
 
 .time-left {
     width: 140px;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.7);
     color: rgb(255, 255, 255);
     text-align: center;
     position: relative;
@@ -276,11 +286,12 @@ color:white;
     font-size: 25px;
     line-height: 44px;
     right: 169px;
+    border-radius: 0px 0px 5px 0px;
 }
 
 .score {
     width: 140px;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.7);
     color: rgb(255, 255, 255);
     text-align: center;
     position: relative;
@@ -290,6 +301,7 @@ color:white;
     font-size: 25px;
     line-height: 44px;
     left: 169px;
+    border-radius: 0px 0px 0px 5px;
 }
 
 .score span:last-child {
@@ -321,6 +333,8 @@ p.question{
 
 .answer {
 color: rgba(255, 255, 255, 0.65);
+height: 35px;
+line-height: 35px;
 }
 
 .answers {
@@ -339,15 +353,16 @@ color: rgba(255, 255, 255, 0.65);
     font-size: 17px;
     font-weight: 500;
     padding: 10px 32px;
-    margin: 26px 5px 0 5px;
+    margin: 35px 5px 0 5px;
     cursor: pointer;
-    border-radius: 0px;
+    border-radius: 5px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.9) !important;
-    background-color: rgba(255, 255, 255, 0.65) !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
     font-weight: 800;
     transition: 0.2s ease;
     border: none !important;
+    letter-spacing: 1px;
 }
 
 #confirm:hover {
@@ -356,6 +371,185 @@ color: rgba(255, 255, 255, 0.65);
 }
 
 #confirm:disabled {
-  background-color: rgba(252, 61, 61, 0.70) !important;
+  background-color: rgba(255, 92, 92, 0.5) !important;
   color: white !important;
+}
+
+#notification {
+position: absolute;
+z-index: 99999;
+background-color: rgb(255, 92, 92);
+width: 250px;
+text-align: center;
+font-size: 15px;
+color: white;
+padding: 25px;
+top: 50%;
+margin-left: -150px;
+margin-top: -35px;
+left: 50%;
+display:none;
+}
+
+/* Contratulations Card */
+
+#congratulations-card {
+  z-index: 8888;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+}
+
+#congratulations-card::after {
+  content: '';
+  z-index: 8888;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  -webkit-filter: blur(1px) saturate(15%);
+  background-image: url(../multimedia/congratulations-bg.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  opacity: 0.3;
+}
+
+#congratulations-card .card {
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 500px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  margin-top: -175px;
+  margin-left: -275px;
+  padding: 30px 25px 25px 25px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.50);
+  transform: scale(0);
+  transition: 0.6s ease-out;
+
+}
+
+#congratulations-card .card h2 {
+  font-family: 'Jurassic-Park' !important;
+  /*color: rgba(252, 61, 61, 0.70);*/
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-size: 90px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  position: absolute;
+  margin-top: -125px;
+  text-align: center;
+}
+
+#congratulations-card .card:first-child > p {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+#congratulations-card .card h3 {
+  color: rgba(252, 61, 61, 0.70);
+  text-align: left;
+  margin-bottom: 10px;
+
+}
+
+#congratulations-card .card ul {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+
+}
+
+#congratulations-card .card ul li {
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color:rgba(255, 255, 255, 0.9);
+}
+
+#congratulations-card .card hr {
+    padding: 0px;
+    border: none;
+    height: 1px;
+    background-color: rgba(255,255,255,0.90);
+    margin: 10px 0 10px 0px;
+}
+
+#congratulations-card .card ul li p {
+  display: inline-block;
+  text-align: left;
+}
+
+#congratulations-card .card ul li span {
+  text-align: left;
+  float: right;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#congratulations-card .card ul li:last-child p {
+color:rgba(255, 255, 255, 0.9);
+text-transform: uppercase;
+}
+
+#congratulations-card .card ul li:last-child span {
+color: rgba(252, 61, 61, 0.70);
+font-size: 18px;
+}
+
+#congratulations-card button {
+font-size: 17px;
+margin: 80px 5px 0px 5px;
+cursor: pointer;
+font-weight: 800;
+border: none !important;
+border: 2px solid rgba(255, 255, 255, 0.7) !important;
+border-radius: 61px;
+color:rgba(255, 255, 255, 0.7);
+letter-spacing: 1px;
+text-transform: uppercase;
+padding: 10px 25px;
+display: inline-block;
+margin-right: 5px;
+-webkit-transition: 0.2s ease-out;
+-mz-transition: 0.2s ease-out;
+-o-transition: 0.2s ease-out;
+transition: 0.2s ease-out;
+background-color: transparent;
+
+}
+
+#congratulations-card button:hover {
+    border: 2px solid rgba(252, 61, 61, 0.70) !important;
+    color: rgb(252, 61, 61);
+}
+
+#incorrect {
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 32px;
+    margin: 35px 5px 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgb(255, 92, 92) !important;
+    font-weight: 800;
+    transition: 0.2s ease;
+    border: none !important;
+    letter-spacing: 1px;
+    z-index: 9999;
+    display: none;
 }

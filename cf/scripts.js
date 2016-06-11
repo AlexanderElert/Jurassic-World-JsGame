@@ -1,183 +1,244 @@
-var cardGame, checkCard, eliminar, gameOver, generarCard, generarRandom, imgBackground, imgPregunta, minutos, mostrarInicio, mostrarJuego, obtenerIndice, ocultarInicio, ocultarJuego, pregunta, pregunta1, pregunta2, pregunta3, preguntasDisponibles, primerRespuesta, puntos, randomCard, resetRadio, respuestaA, respuestaB, respuestaC, respuestaCorrecta, respuestaSelecionada, restarSegundos, segundos, selecionarPreguntas, temporizador, tiempo, valor,
+
+/* -DEFINIENDO VARIABLES INICIALES- */
+var addScore, answerA, answerB, answerC, answerCorrect, answerSelected, buttonPushdown, buttonPushup, checkAnswer, checkCard, combo, comboMax, confirmAble, confirmDisable, gameOver, generateCard, generateGame, generateRandom, getIndex, getValue, hideConfirm, hideCongratulations, hideGame, hideHome, imgBackground, imgquestion, minutes, printMaxcombo, printResults, printScore, printTimeleft, printTotalscore, question, question1, question2, question3, questionsAvailable, quitScore, randomCard, remove, removeSeconds, resetRadio, score, scoreBonus, scoreCalculate, scoreCheck, scoreCombomax, scoreTotal, scoreUpdate, seconds, selectquestions, showConfirm, showCongratulations, showGame, showHome, time, timeFuncionA, timeFuncionB, timeFuncionC, timeFuncionE, timeFuncionF, timeFuncionG, timeFunctions, timer, value,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 imgBackground = '';
 
-imgPregunta = '';
+imgquestion = '';
 
-pregunta = '';
+question = '';
 
-respuestaA = '';
+answerA = '';
 
-respuestaB = '';
+answerB = '';
 
-respuestaC = '';
+answerC = '';
 
-respuestaCorrecta = '';
+answerCorrect = '';
 
-respuestaSelecionada = '';
+answerSelected = '';
 
-primerRespuesta = 2;
+questionsAvailable = [1, 2, 3];
 
-preguntasDisponibles = [1, 2, 3];
+value = 0;
 
-resetRadio = function() {
-  $('#game-card input[type=radio]').prop("checked", false);
-  respuestaSelecionada = '';
-  return console.log('se resetearon los valores checked de los campos y el valor correcto de las respuestas');
-};
+score = 0;
+
+scoreBonus = 0;
+
+scoreCombomax = 0;
+
+scoreTotal = 0;
+
+combo = 0;
+
+comboMax = 0;
+
+time = 180;
+
+minutes = Math.floor(time / 60);
+
+seconds = time % 60;
 
 
-/* BORRAR ITEM DE UN ARRAY!!!
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log array
- * Crear una variable para asignarle el valor que será borrado ej: 3
-valor = 3
- * Crear una variable que ordenara el array poniendo el valor asignado al inicio de la misma
-orden = array.indexOf(valor)
-console.log orden
- * Crear funcion que elimine del array el valor asignado
-eliminar = ->
-  array.splice(orden, 1);
-  console.log array
- */
+/* -DEFINIENDO PREGUNTAS- */
 
-valor = 0;
-
-pregunta1 = function() {
-  if (valor === 1) {
+question1 = function() {
+  if (value === 1) {
     imgBackground = 'card-bg-1';
-    imgPregunta = 'multimedia/header-1.jpg';
-    pregunta = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?';
-    respuestaA = 'Moscas, Arañas y Delfines';
-    respuestaB = 'Calamares, Ranas y Raptores';
-    respuestaC = 'Tiranosaurus-Rex, Largartijas y Camaleones';
-    respuestaCorrecta = respuestaB;
+    imgquestion = 'multimedia/header-1.jpg';
+    question = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?';
+    answerA = 'Moscas, Arañas y Delfines';
+    answerB = 'Calamares, Ranas y Raptores';
+    answerC = 'Tiranosaurus-Rex, Largartijas y Camaleones';
+    answerCorrect = answerB;
     return resetRadio();
   }
 };
 
-pregunta2 = function() {
-  if (valor === 2) {
+question2 = function() {
+  if (value === 2) {
     imgBackground = 'card-bg-2';
-    imgPregunta = 'multimedia/header-2.jpg';
-    pregunta = '¿Como se llama el escritor de la novela "Parque Jurásico"?';
-    respuestaA = 'Michael Crichton';
-    respuestaB = 'Steven Spielberg';
-    respuestaC = 'Colin Trevorrow';
-    respuestaCorrecta = respuestaA;
+    imgquestion = 'multimedia/header-2.jpg';
+    question = '¿Como se llama el escritor de la novela "Parque Jurásico"?';
+    answerA = 'Michael Crichton';
+    answerB = 'Steven Spielberg';
+    answerC = 'Colin Trevorrow';
+    answerCorrect = answerA;
     return resetRadio();
   }
 };
 
-pregunta3 = function() {
-  if (valor === 3) {
+question3 = function() {
+  if (value === 3) {
     imgBackground = 'card-bg-3';
-    imgPregunta = 'multimedia/header-3.jpg';
-    pregunta = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?';
-    respuestaA = 'Carcharodontosaurus';
-    respuestaB = 'Suchomimus';
-    respuestaC = 'Spinosaurus';
-    respuestaCorrecta = respuestaC;
+    imgquestion = 'multimedia/header-3.jpg';
+    question = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?';
+    answerA = 'Carcharodontosaurus';
+    answerB = 'Suchomimus';
+    answerC = 'Spinosaurus';
+    answerCorrect = answerC;
     return resetRadio();
   }
 };
 
-randomCard = function() {
-  eliminar();
-  return selecionarPreguntas();
+getValue = function() {
+  value = Math.floor(Math.random() * 3 + 1);
+  console.log(value);
+  return console.log(questionsAvailable);
 };
 
-selecionarPreguntas = function() {
-  pregunta1();
-  pregunta2();
-  return pregunta3();
+getIndex = function() {
+  return questionsAvailable.indexOf(value);
 };
 
-obtenerIndice = function() {
-  return preguntasDisponibles.indexOf(valor);
+remove = function() {
+  getIndex();
+  return questionsAvailable.splice(getIndex(), 1);
 };
 
-eliminar = function() {
-  obtenerIndice();
-  return preguntasDisponibles.splice(obtenerIndice(), 1);
-};
-
-generarRandom = function() {
-  valor = Math.floor(Math.random() * 3 + 1);
-  console.log(valor);
-  console.log(preguntasDisponibles);
-  if (preguntasDisponibles.length === 0) {
-    return alert('el array está vacio');
-  } else if (indexOf.call(preguntasDisponibles, valor) >= 0) {
-    randomCard();
-    return console.log(preguntasDisponibles);
-  } else {
-    return generarRandom();
-  }
-};
-
-
-/*
-randomCard = ->
-  x = Math.floor(Math.random() * 3 + 1)
-  if x == 1
-    pregunta1()
-  else if x == 2
-    pregunta2()
-  else
-    pregunta3()
- */
-
-generarCard = function() {
-  $('.question-header img').attr('src', imgPregunta);
+generateCard = function() {
+  $('.question-header img').attr('src', imgquestion);
   $('#game-card-overlay').removeClass('card-bg-1').removeClass('card-bg-2').removeClass('card-bg-3');
   $('#game-card-overlay').addClass(imgBackground);
-  $('.question').html(pregunta);
-  $('.answers > label:nth-child(2) > p').html(respuestaA);
-  $('.answers > label:nth-child(4) > p').html(respuestaB);
-  return $('.answers > label:nth-child(6) > p').html(respuestaC);
+  $('.question').html(question);
+  $('.answers > label:nth-child(2) > p').html(answerA);
+  $('.answers > label:nth-child(4) > p').html(answerB);
+  return $('.answers > label:nth-child(6) > p').html(answerC);
+};
+
+scoreUpdate = function() {
+  $('.time-left span:first-child').html(minutes);
+  $('.time-left span:last-child').html(seconds);
+  return $('.score span:first-child').html(score);
+};
+
+hideCongratulations = function() {
+  return $('#congratulations-card').fadeOut(100);
 };
 
 checkCard = function() {
   $('.answers label:nth-child(2)').click(function() {
-    respuestaSelecionada = respuestaA;
-    return $('#confirm').prop("disabled", false);
+    answerSelected = answerA;
+    return confirmAble();
   });
   $('.answers label:nth-child(4)').click(function() {
-    respuestaSelecionada = respuestaB;
-    return $('#confirm').prop("disabled", false);
+    answerSelected = answerB;
+    return confirmAble();
   });
   return $('.answers label:nth-child(6)').click(function() {
-    respuestaSelecionada = respuestaC;
-    return $('#confirm').prop("disabled", false);
+    answerSelected = answerC;
+    return confirmAble();
   });
 };
 
-cardGame = function() {
-  generarRandom();
-  generarCard();
-  return checkCard();
+addScore = function() {
+  seconds += 2;
+  score += 1000;
+  combo += 1;
+  if (combo >= comboMax) {
+    comboMax = combo;
+  }
+  return console.log('combo Maximo =', comboMax);
 };
 
-mostrarInicio = function() {
+quitScore = function() {
+  score -= 500;
+  combo = 0;
+  return console.log('se quitaron 500pts por errar la resp');
+};
+
+scoreCalculate = function() {
+  scoreBonus = (minutes * 1200) + (seconds * 20);
+  scoreCombomax = comboMax * 1000;
+  return scoreTotal = score + scoreBonus;
+};
+
+resetRadio = function() {
+  $('#game-card input[type=radio]').prop("checked", false);
+  answerSelected = '';
+  return console.log('se resetearon los input checkeados y el valor correcto de las respuestas');
+};
+
+hideConfirm = function() {
+  $('#confirm').fadeOut(0);
+  return $('#incorrect').fadeIn(0);
+};
+
+showConfirm = function() {
+  $('#incorrect').fadeOut(0);
+  return $('#confirm').fadeIn(0);
+};
+
+confirmAble = function() {
+  console.log('correcto');
+  $('#confirm').prop("disabled", false);
+  $('#confirm').html('Siguiente');
+  $('#confirm').fadeIn(0);
+  return showConfirm();
+};
+
+confirmDisable = function() {
+  console.log('respuesta incorrecta');
+  $('#confirm').prop("disabled", true);
+  $('#confirm').html('Respuesta incorrecta');
+  return hideConfirm();
+};
+
+buttonPushdown = function() {
+  $('#confirm').css('transform', 'scale(0.9)');
+  $('#confirm').css('transition', '0.1s ease-in');
+  $('#incorrect').css('transform', 'scale(0.9)');
+  return $('#incorrect').css('transition', '0.1s ease-in');
+};
+
+buttonPushup = function() {
+  $('#confirm').css('transform', 'scale(1)');
+  $('#confirm').css('transition', '0.2s ease-out');
+  $('#incorrect').css('transform', 'scale(1)');
+  return $('#incorrect').css('transition', '0.2s ease-out');
+};
+
+printResults = function() {
+  scoreCalculate();
+  return showCongratulations();
+};
+
+printScore = function() {
+  return $('#congratulations-card .card ul li:first-child span').html(score + "pts");
+};
+
+printTimeleft = function() {
+  return $('#congratulations-card .card ul li:nth-child(2) span').html(minutes + ":" + seconds + " (+" + scoreBonus + "pts)");
+};
+
+printMaxcombo = function() {
+  return $('#congratulations-card .card ul li:nth-child(3) span').html(comboMax + " (+" + scoreCombomax + "pts)");
+};
+
+printTotalscore = function() {
+  return $('#congratulations-card .card ul li:last-child span').html(scoreTotal + "pts");
+};
+
+showHome = function() {
   $('#overlay').fadeIn(0);
   $('#background_video').fadeIn(0);
   return $('#main_content').fadeIn(0);
 };
 
-ocultarInicio = function() {
+hideHome = function() {
   $('#overlay').fadeOut(0);
   $('#background_video').fadeOut(0);
   return $('#main_content').fadeOut(0);
 };
 
-mostrarJuego = function() {
+showGame = function() {
   $('#game-card').fadeIn(700);
   return $('#game-card-overlay').fadeIn(700);
 };
 
-ocultarJuego = function() {
+hideGame = function() {
   $('#game-card').fadeOut(0);
   return $('#game-card-overlay').fadeOut(0);
 };
@@ -190,109 +251,183 @@ gameOver = function() {
   return $('#main_content').fadeIn(0);
 };
 
-
-/* RECURSIVIDAD!!!
-ping = ->
-  console.log "Pinged"
-  setTimeout ->
-    ping()
-  , 1000
-
-ping()
- */
-
-puntos = 0;
-
-$('#confirm').click(function() {
-  primerRespuesta -= 0;
-  if (respuestaSelecionada === respuestaCorrecta) {
-    segundos += 2;
-    puntos += 100;
-    return $('.score span:first-child').html(puntos);
-  } else if (respuestaSelecionada !== respuestaCorrecta && primerRespuesta <= 0) {
-    console.log(primerRespuesta);
-    console.log('se resto segundos');
-    segundos -= 5;
-    puntos -= 50;
-    return $('.score span:first-child').html(puntos);
-  }
-});
-
-tiempo = 800;
-
-minutos = Math.floor(tiempo / 60);
-
-segundos = tiempo % 60;
-
-restarSegundos = function() {
-  if (segundos >= 61) {
-    segundos -= 60;
-    minutos += 1;
-    $('.time-left span:first-child').html(minutos);
-    $('.time-left span:last-child').html(segundos);
-  } else if (segundos === 0 && minutos >= 1) {
-    segundos += 60;
-    minutos -= 1;
-    $('.time-left span:first-child').html(minutos);
-    $('.time-left span:last-child').html(segundos);
-  } else if (segundos <= 0 && minutos <= 0) {
-    $('.time-left span:first-child').html('');
-    $('.time-left span:nth-child(2)').html('Agotado');
-    $('.time-left span:last-child').html('');
-    gameOver();
-  } else {
-    segundos -= 1;
-    $('.time-left span:first-child').html(minutos);
-    $('.time-left span:last-child').html(segundos);
-    setTimeout(function() {
-      return restarSegundos();
-    }, 1000);
-  }
-  if (segundos <= 10 && minutos === 0) {
-    $('.time-left').css('color', 'rgba(252, 61, 61, 0.70)');
-    $('.time-left span:first-child').html(minutos);
-    $('.time-left span:last-child').html(segundos);
-  } else {
-    $('.time-left').css('color', 'white');
-    $('.time-left span:first-child').html(minutos);
-    $('.time-left span:last-child').html(segundos);
-  }
-  if (puntos <= 0) {
-    $('.score').css('color', 'rgba(252, 61, 61, 0.70)');
-    return $('.score span:first-child').html(puntos);
-  } else {
-    $('.score').css('color', 'white');
-    return $('.score span:first-child').html(puntos);
-  }
+showCongratulations = function() {
+  $('#congratulations-card').fadeIn(300);
+  $('#congratulations-card .card').css('transform', 'scale(1)');
+  printScore();
+  printTimeleft();
+  printMaxcombo();
+  return printTotalscore();
 };
 
-temporizador = function() {
+
+/* -DEFINIENDO FUNCIONES COMPLEJAS- */
+
+timeFunctions = function() {
+  timeFuncionA();
+  timeFuncionB();
+  timeFuncionC();
+  timeFuncionE();
+  timeFuncionF();
+  return timeFuncionG();
+};
+
+removeSeconds = function() {
+  timeFunctions();
+  return setTimeout(function() {
+    return removeSeconds();
+  }, 1000);
+};
+
+timer = function() {
   var results;
   results = [];
   while (true) {
-    restarSegundos();
+    removeSeconds();
     break;
   }
   return results;
 };
 
-ocultarJuego();
+selectquestions = function() {
+  question1();
+  question2();
+  return question3();
+};
 
-$('#jugar').click(function() {
-  cardGame();
-  temporizador();
-  ocultarInicio();
-  return mostrarJuego();
+randomCard = function() {
+  remove();
+  return selectquestions();
+};
+
+generateRandom = function() {
+  getValue();
+  if (questionsAvailable.length === 0) {
+    scoreUpdate();
+    hideGame();
+    return printResults();
+  } else if (indexOf.call(questionsAvailable, value) >= 0) {
+    randomCard();
+    return console.log(questionsAvailable);
+  } else {
+    return generateRandom();
+  }
+};
+
+generateGame = function() {
+  generateRandom();
+  generateCard();
+  return checkCard();
+};
+
+
+/* -FUNCIONES COMPUESTAS- */
+
+timeFuncionA = function() {
+  if (seconds >= 60) {
+    seconds -= 59;
+    minutes += 1;
+    return scoreUpdate();
+  }
+};
+
+timeFuncionB = function() {
+  if (seconds === 0 && minutes >= 1) {
+    seconds += 60;
+    minutes -= 1;
+    return scoreUpdate();
+  }
+};
+
+timeFuncionC = function() {
+  if (seconds <= 0 && minutes <= 0) {
+    $('.time-left span:first-child').html('');
+    $('.time-left span:nth-child(2)').html('Agotado');
+    $('.time-left span:last-child').html('');
+    return gameOver();
+  }
+};
+
+timeFuncionE = function() {
+  seconds -= 1;
+  return scoreUpdate();
+};
+
+timeFuncionF = function() {
+  if (seconds <= 10 && minutes === 0) {
+    $('.time-left').css('color', 'rgba(252, 61, 61, 0.70)');
+    return scoreUpdate();
+  } else {
+    $('.time-left').css('color', 'white');
+    return scoreUpdate();
+  }
+};
+
+timeFuncionG = function() {
+  if (score <= 0) {
+    $('.score').css('color', 'rgba(252, 61, 61, 0.70)');
+    return scoreUpdate();
+  } else {
+    $('.score').css('color', 'white');
+    return scoreUpdate();
+  }
+};
+
+scoreCheck = function() {
+  if (answerSelected === answerCorrect) {
+    addScore();
+    scoreUpdate();
+  }
+  if (answerSelected !== answerCorrect) {
+    quitScore();
+    return scoreUpdate();
+  }
+};
+
+checkAnswer = function() {
+  if (answerSelected === answerCorrect) {
+    confirmAble();
+    return generateGame();
+  } else {
+    confirmDisable();
+    return resetRadio();
+  }
+};
+
+
+/* -DEFINIENDO FUNCIONES DE INTERACCIÓN- */
+
+$('#play').click(function() {
+  generateGame();
+  timer();
+  hideHome();
+  return showGame();
 });
 
 $('#confirm').click(function() {
-  if (respuestaSelecionada === respuestaCorrecta) {
-    console.log('correcto');
-    $('#confirm').prop("disabled", false);
-    return cardGame();
-  } else {
-    $('#confirm').prop("disabled", true);
-    console.log('respuesta incorrecta');
-    return resetRadio();
-  }
+  scoreCheck();
+  return checkAnswer();
 });
+
+$('#confirm').mouseup(function() {
+  return buttonPushup();
+});
+
+$('#confirm').mousedown(function() {
+  return buttonPushdown();
+});
+
+$('#incorrect').mouseup(function() {
+  return buttonPushup();
+});
+
+$('#incorrect').mousedown(function() {
+  return buttonPushdown();
+});
+
+
+/* -EJECUTANDO FUNCIONES INICIALES- */
+
+hideGame();
+
+hideCongratulations();

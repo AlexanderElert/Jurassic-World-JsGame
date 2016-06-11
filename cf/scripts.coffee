@@ -1,151 +1,188 @@
-# Variables de preguntas
+### -DEFINIENDO VARIABLES INICIALES- ###
 imgBackground = ''
-imgPregunta = ''
-pregunta = ''
-respuestaA = ''
-respuestaB = ''
-respuestaC = ''
-respuestaCorrecta = ''
-respuestaSelecionada = ''
-primerRespuesta = 2
-preguntasDisponibles = [1, 2, 3]
+imgquestion = ''
+question = ''
+answerA = ''
+answerB = ''
+answerC = ''
+answerCorrect = ''
+answerSelected = ''
+questionsAvailable = [1, 2, 3]
+value = 0
+score = 0
+scoreBonus = 0
+scoreCombomax = 0
+scoreTotal = 0
+combo = 0
+comboMax = 0
+time = 180
+minutes = Math.floor(time / 60)
+seconds = time % 60
 
-resetRadio = ->
-  $('#game-card input[type=radio]').prop( "checked", false )
-  respuestaSelecionada = ''
-  console.log 'se resetearon los valores checked de los campos y el valor correcto de las respuestas'
-
-### BORRAR ITEM DE UN ARRAY!!!
-array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-console.log array
-# Crear una variable para asignarle el valor que será borrado ej: 3
-valor = 3
-# Crear una variable que ordenara el array poniendo el valor asignado al inicio de la misma
-orden = array.indexOf(valor)
-console.log orden
-# Crear funcion que elimine del array el valor asignado
-eliminar = ->
-  array.splice(orden, 1);
-  console.log array
-###
-
-valor = 0
-
-pregunta1 = ->
-  if valor == 1
+### -DEFINIENDO PREGUNTAS- ###
+question1 = ->
+  if value == 1
     imgBackground = 'card-bg-1'
-    imgPregunta = 'multimedia/header-1.jpg'
-    pregunta = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?'
-    respuestaA = 'Moscas, Arañas y Delfines'
-    respuestaB = 'Calamares, Ranas y Raptores'
-    respuestaC = 'Tiranosaurus-Rex, Largartijas y Camaleones'
-    respuestaCorrecta = respuestaB
+    imgquestion = 'multimedia/header-1.jpg'
+    question = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?'
+    answerA = 'Moscas, Arañas y Delfines'
+    answerB = 'Calamares, Ranas y Raptores'
+    answerC = 'Tiranosaurus-Rex, Largartijas y Camaleones'
+    answerCorrect = answerB
     resetRadio()
 
-pregunta2 = ->
-  if valor == 2
+question2 = ->
+  if value == 2
     imgBackground = 'card-bg-2'
-    imgPregunta = 'multimedia/header-2.jpg'
-    pregunta = '¿Como se llama el escritor de la novela "Parque Jurásico"?'
-    respuestaA = 'Michael Crichton'
-    respuestaB = 'Steven Spielberg'
-    respuestaC = 'Colin Trevorrow'
-    respuestaCorrecta = respuestaA
+    imgquestion = 'multimedia/header-2.jpg'
+    question = '¿Como se llama el escritor de la novela "Parque Jurásico"?'
+    answerA = 'Michael Crichton'
+    answerB = 'Steven Spielberg'
+    answerC = 'Colin Trevorrow'
+    answerCorrect = answerA
     resetRadio()
 
-pregunta3 = ->
-  if valor == 3
+question3 = ->
+  if value == 3
     imgBackground = 'card-bg-3'
-    imgPregunta = 'multimedia/header-3.jpg'
-    pregunta = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?'
-    respuestaA = 'Carcharodontosaurus'
-    respuestaB = 'Suchomimus'
-    respuestaC = 'Spinosaurus'
-    respuestaCorrecta = respuestaC
+    imgquestion = 'multimedia/header-3.jpg'
+    question = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?'
+    answerA = 'Carcharodontosaurus'
+    answerB = 'Suchomimus'
+    answerC = 'Spinosaurus'
+    answerCorrect = answerC
     resetRadio()
 
-randomCard = ->
-    eliminar()
-    selecionarPreguntas()
+# -DEFINIENDO FUNCIONES BÁSICAS- ###
+# Armado del DOM en Card
+getValue = ->
+  value = Math.floor(Math.random() * 3 + 1)
+  console.log value
+  console.log questionsAvailable
 
-selecionarPreguntas = ->
-  pregunta1()
-  pregunta2()
-  pregunta3()
+getIndex = ->
+  questionsAvailable.indexOf(value)
 
-obtenerIndice = ->
-  preguntasDisponibles.indexOf(valor)
-eliminar = ->
-  obtenerIndice()
-  preguntasDisponibles.splice(obtenerIndice(), 1);
+remove = ->
+  getIndex()
+  questionsAvailable.splice(getIndex(), 1);
 
-generarRandom = ->
-  valor = Math.floor(Math.random() * 3 + 1)
-  console.log valor
-  console.log preguntasDisponibles
-  if preguntasDisponibles.length == 0
-    alert 'el array está vacio'
-  else if valor in preguntasDisponibles
-    randomCard()
-    console.log preguntasDisponibles
-  else
-    generarRandom()
-
-
-###
-randomCard = ->
-  x = Math.floor(Math.random() * 3 + 1)
-  if x == 1
-    pregunta1()
-  else if x == 2
-    pregunta2()
-  else
-    pregunta3()
-###
-
-# Armado del DOM en card
-generarCard = ->
-  $('.question-header img').attr('src', imgPregunta)
+generateCard = ->
+  $('.question-header img').attr('src', imgquestion)
   $('#game-card-overlay').removeClass('card-bg-1').removeClass('card-bg-2').removeClass('card-bg-3')
   $('#game-card-overlay').addClass(imgBackground)
-  $('.question').html(pregunta)
-  $('.answers > label:nth-child(2) > p').html(respuestaA)
-  $('.answers > label:nth-child(4) > p').html(respuestaB)
-  $('.answers > label:nth-child(6) > p').html(respuestaC)
+  $('.question').html(question)
+  $('.answers > label:nth-child(2) > p').html(answerA)
+  $('.answers > label:nth-child(4) > p').html(answerB)
+  $('.answers > label:nth-child(6) > p').html(answerC)
+
+scoreUpdate = ->
+  $('.time-left span:first-child').html(minutes)
+  $('.time-left span:last-child').html(seconds)
+  $('.score span:first-child').html(score)
+
+hideCongratulations = ->
+  $('#congratulations-card').fadeOut(100)
 
 # Checkeo de respuesta correcta
 checkCard = ->
   $('.answers label:nth-child(2)').click ->
-    respuestaSelecionada = respuestaA
-    $('#confirm').prop( "disabled", false )
+    answerSelected = answerA
+    confirmAble()
   $('.answers label:nth-child(4)').click ->
-    respuestaSelecionada = respuestaB
-    $('#confirm').prop( "disabled", false )
+    answerSelected = answerB
+    confirmAble()
   $('.answers label:nth-child(6)').click ->
-    respuestaSelecionada = respuestaC
-    $('#confirm').prop( "disabled", false )
+    answerSelected = answerC
+    confirmAble()
 
-# Generar card
-cardGame = ->
-  generarRandom()
-  generarCard()
-  checkCard()
+addScore = ->
+  seconds += 2
+  score += 1000
+  combo += 1
+  if combo >= comboMax
+    comboMax = combo
+  console.log 'combo Maximo =',comboMax
 
-mostrarInicio = ->
+quitScore = ->
+  score -= 500
+  combo = 0
+  console.log 'se quitaron 500pts por errar la resp'
+
+scoreCalculate = ->
+  scoreBonus = (minutes * 1200) + (seconds * 20)
+  scoreCombomax = comboMax * 1000
+  scoreTotal = score + scoreBonus
+
+resetRadio = ->
+  $('#game-card input[type=radio]').prop( "checked", false )
+  answerSelected = ''
+  console.log 'se resetearon los input checkeados y el valor correcto de las respuestas'
+
+hideConfirm = ->
+  $('#confirm').fadeOut(0)
+  $('#incorrect').fadeIn(0)
+showConfirm = ->
+  $('#incorrect').fadeOut(0)
+  $('#confirm').fadeIn(0)
+
+confirmAble = ->
+  console.log 'correcto'
+  $('#confirm').prop( "disabled", false )
+  $('#confirm').html( 'Siguiente' )
+  $('#confirm').fadeIn(0)
+  showConfirm()
+
+confirmDisable = ->
+  console.log 'respuesta incorrecta'
+  $('#confirm').prop( "disabled", true )
+  $('#confirm').html( 'Respuesta incorrecta' )
+  hideConfirm()
+
+buttonPushdown = ->
+  $('#confirm').css('transform', 'scale(0.9)')
+  $('#confirm').css('transition', '0.1s ease-in')
+  $('#incorrect').css('transform', 'scale(0.9)')
+  $('#incorrect').css('transition', '0.1s ease-in')
+
+buttonPushup = ->
+  $('#confirm').css('transform', 'scale(1)')
+  $('#confirm').css('transition', '0.2s ease-out')
+  $('#incorrect').css('transform', 'scale(1)')
+  $('#incorrect').css('transition', '0.2s ease-out')
+
+printResults = ->
+  scoreCalculate()
+  showCongratulations()
+
+printScore = ->
+  $('#congratulations-card .card ul li:first-child span').html(score + "pts")
+
+printTimeleft = ->
+  $('#congratulations-card .card ul li:nth-child(2) span').html(minutes + ":" + seconds + " (+" + scoreBonus + "pts)")
+
+printMaxcombo = ->
+  $('#congratulations-card .card ul li:nth-child(3) span').html(comboMax + " (+" + scoreCombomax + "pts)")
+
+printTotalscore = ->
+  $('#congratulations-card .card ul li:last-child span').html(scoreTotal + "pts")
+
+# Mostrar/Ocultar secciones
+showHome = ->
   $('#overlay').fadeIn(0)
   $('#background_video').fadeIn(0)
   $('#main_content').fadeIn(0)
 
-ocultarInicio = ->
+hideHome = ->
   $('#overlay').fadeOut(0)
   $('#background_video').fadeOut(0)
   $('#main_content').fadeOut(0)
 
-mostrarJuego = ->
+showGame = ->
   $('#game-card').fadeIn(700)
   $('#game-card-overlay').fadeIn(700)
 
-ocultarJuego = ->
+hideGame = ->
   $('#game-card').fadeOut(0)
   $('#game-card-overlay').fadeOut(0)
 
@@ -156,95 +193,145 @@ gameOver = ->
   $('#background_video').fadeIn(0)
   $('#main_content').fadeIn(0)
 
-### RECURSIVIDAD!!!
-ping = ->
-  console.log "Pinged"
+showCongratulations = ->
+  $('#congratulations-card').fadeIn(300)
+  $('#congratulations-card .card').css('transform', 'scale(1)')
+  printScore()
+  printTimeleft()
+  printMaxcombo()
+  printTotalscore()
+
+### -DEFINIENDO FUNCIONES COMPLEJAS- ###
+# Temporizador
+timeFunctions = ->
+  timeFuncionA()
+  timeFuncionB()
+  timeFuncionC()
+  timeFuncionE()
+  timeFuncionF()
+  timeFuncionG()
+
+removeSeconds = ->
+  timeFunctions()
   setTimeout ->
-    ping()
+    removeSeconds()
   , 1000
 
-ping()
+timer = ->
+  loop
+    removeSeconds()
+    break
 
-###
+# Generar Carta
+selectquestions = ->
+  question1()
+  question2()
+  question3()
 
-# Funcion de puntos
-puntos = 0
-$('#confirm').click ->
-  primerRespuesta -= 0
-  if respuestaSelecionada == respuestaCorrecta
-    segundos += 2
-    puntos += 100
-    $('.score span:first-child').html(puntos)
-  else if respuestaSelecionada != respuestaCorrecta and primerRespuesta <= 0
-    console.log primerRespuesta
-    console.log 'se resto segundos'
-    segundos -= 5
-    puntos -= 50
-    $('.score span:first-child').html(puntos)
+randomCard = ->
+    remove()
+    selectquestions()
 
-# Funcion de tiempo
-tiempo = 800
-minutos = Math.floor(tiempo / 60)
-segundos = tiempo % 60
+generateRandom = ->
+  getValue()
+  if questionsAvailable.length == 0
+    scoreUpdate()
+    hideGame()
+    printResults()
+  else if value in questionsAvailable
+    randomCard()
+    console.log questionsAvailable
+  else
+    generateRandom()
 
-restarSegundos = ->
-  if segundos >= 61
-    segundos -= 60
-    minutos +=1
-    $('.time-left span:first-child').html(minutos)
-    $('.time-left span:last-child').html(segundos)
-  else if segundos == 0 and minutos >= 1
-    segundos += 60
-    minutos -= 1
-    $('.time-left span:first-child').html(minutos)
-    $('.time-left span:last-child').html(segundos)
-  else if segundos <= 0 and minutos <= 0
+generateGame = ->
+  generateRandom()
+  generateCard()
+  checkCard()
+
+### -FUNCIONES COMPUESTAS- ###
+# Configuración del tiempo
+timeFuncionA = ->
+  if seconds >= 60
+    seconds -= 59
+    minutes +=1
+    scoreUpdate()
+
+timeFuncionB = ->
+  if seconds == 0 and minutes >= 1
+    seconds += 60
+    minutes -= 1
+    scoreUpdate()
+
+timeFuncionC = ->
+  if seconds <= 0 and minutes <= 0
     $('.time-left span:first-child').html('')
     $('.time-left span:nth-child(2)').html('Agotado')
     $('.time-left span:last-child').html('')
     gameOver()
-  else
-    segundos -= 1
-    $('.time-left span:first-child').html(minutos)
-    $('.time-left span:last-child').html(segundos)
-    setTimeout ->
-      restarSegundos()
-    , 1000
-  if segundos <= 10 and minutos == 0
+
+timeFuncionE = ->
+  seconds -= 1
+  scoreUpdate()
+
+timeFuncionF = ->
+  if seconds <= 10 and minutes == 0
     $('.time-left').css('color', 'rgba(252, 61, 61, 0.70)')
-    $('.time-left span:first-child').html(minutos)
-    $('.time-left span:last-child').html(segundos)
+    scoreUpdate()
   else
     $('.time-left').css('color', 'white')
-    $('.time-left span:first-child').html(minutos)
-    $('.time-left span:last-child').html(segundos)
-  if puntos <= 0
+    scoreUpdate()
+
+timeFuncionG = ->
+  if score <= 0
     $('.score').css('color', 'rgba(252, 61, 61, 0.70)')
-    $('.score span:first-child').html(puntos)
+    scoreUpdate()
   else
     $('.score').css('color', 'white')
-    $('.score span:first-child').html(puntos)
+    scoreUpdate()
 
-# temporizador
-temporizador = ->
-  loop
-    restarSegundos()
-    break
+# Configuracion de los puntos
 
-ocultarJuego()
+scoreCheck = ->
+  if answerSelected == answerCorrect
+    addScore()
+    scoreUpdate()
+  if answerSelected != answerCorrect
+    quitScore()
+    scoreUpdate()
 
-$('#jugar').click ->
-  cardGame()
-  temporizador()
-  ocultarInicio()
-  mostrarJuego()
+# Configuración de interfaz
+checkAnswer = ->
+  if answerSelected == answerCorrect
+    confirmAble()
+    generateGame()
+  else
+    confirmDisable()
+    resetRadio()
+
+### -DEFINIENDO FUNCIONES DE INTERACCIÓN- ###
+$('#play').click ->
+  generateGame()
+  timer()
+  hideHome()
+  showGame()
 
 $('#confirm').click ->
-  if respuestaSelecionada == respuestaCorrecta
-    console.log 'correcto'
-    $('#confirm').prop( "disabled", false )
-    cardGame()
-  else
-    $('#confirm').prop( "disabled", true )
-    console.log 'respuesta incorrecta'
-    resetRadio()
+  scoreCheck()
+  checkAnswer()
+
+$('#confirm').mouseup ->
+  buttonPushup()
+
+$('#confirm').mousedown ->
+  buttonPushdown()
+
+$('#incorrect').mouseup ->
+  buttonPushup()
+
+$('#incorrect').mousedown ->
+  buttonPushdown()
+
+### -EJECUTANDO FUNCIONES INICIALES- ###
+hideGame()
+hideCongratulations()

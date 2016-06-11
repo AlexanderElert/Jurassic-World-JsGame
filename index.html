@@ -18,8 +18,8 @@
         <video id="background_video" loop muted autoplay></video>
         <div id="video_cover"></div>
         <div id="overlay"></div>
-        <audio loop autoplay muted>
-            <source src="multimedia/soundtrack.mp3" type="audio/mpeg">
+        <audio loop autoplay controls="controls" class="audio">
+            <source src="multimedia/soundtrack-2.mp3" type="audio/mpeg">
         </audio>
         <section id="main_content">
             <div id="head">
@@ -31,12 +31,12 @@
 
             <div id="links">
                 <p>¿Serás capaz de lograrlo?</p>
-                <a href="#jugar" id="jugar">Jugar</a>
+                <a href="#play" id="play">Jugar</a>
                 <a href="#records" id="records">Ver Records</a>
             </div>
         </section>
 
-        <div id="game-card-overlay" class="" tabindex="-1" style="opacity: 1.06; display: block;"></div>
+        <div id="game-card-overlay" class="" ></div>
          <section id="game-card">
            <div class="time-left">
              <span></span><span>:</span><span></span>
@@ -62,13 +62,62 @@
           <label for="B"><p class="answer"></p></label>
           <input type="radio" name="opciones" id="C" value="C">
           <label for="C"><p class="answer"></p></label>
-          <div class=".confirm-container">
+          <div class="confirm-container">
 
-          <button id="confirm" tabindex="1">Siguiente</button>
+          <button id="confirm">Siguiente</button>
+          <button id="incorrect">Respuesta incorrecta</button>
 
+          </div>
           </div>
           </div>
         </section>
+
+        <section id="congratulations-card">
+          <div class="card">
+            <h2>
+              - Congratulations -
+            </h2>
+
+            <p>
+              Has respondido todas las preguntas dentro del tiempo limite. Tus habilidades y conocimientos son dignos de un verdadero fanático de los dinosaurios!
+            </p>
+
+            <h3>
+              Resumen:
+            </h3>
+            <ul>
+              <li>
+                <p>Puntos obtenidos:</p>
+                <span></span>
+              </li>
+
+              <li>
+                <p>Tiempo restante:</p>
+                <span>asd</span>
+              </li>
+
+              <li>
+                <p>Combo máximo:</p>
+                <span>www</span>
+              </li>
+
+              <hr>
+
+              <li>
+                <p>Total:</p>
+                <span></span>
+              </li>
+            </ul>
+            <button type="button" name="retry">Reintentar</button>
+            <button type="button" name="next">Continuar</button>
+          </div>
+        </section>
+        <div id="notification">
+          <p>
+            Respuesta incorrecta!
+          </p>
+        </div>
+
     </div>
     <div id="footer">
         <p>Jurassic World™ @2016 Todos los derechos reservados. Diseñado por <a class="twitter" href="https://twitter.com/alexanderelert">Alexander Elert</a>.</p>
@@ -78,7 +127,36 @@
     <script src="js/sweetalert.min.js"></script>
     <script src="cf/scripts.js"></script>
     <script src="js/bideo.js"></script>
+    <script type="text/javascript" src="js/jquery.easyaudioeffects.1.0.0.min.js"></script>
     <script type="text/javascript">
+    $('#play').easyAudioEffects({
+   ogg : "multimedia/start.ogg",
+   mp3 : "multimedia/start.mp3",
+   eventType : "click" // or "click"
+});
+
+$('#confirm').easyAudioEffects({
+ogg : "multimedia/next.ogg",
+mp3 : "multimedia/next.mp3",
+eventType : "click", // or "click"
+playType : "oneShotPolyphonic"
+});
+
+$('#incorrect').easyAudioEffects({
+ogg : "multimedia/unable.ogg",
+mp3 : "multimedia/unable.mp3",
+eventType : "click", // or "click"
+playType : "oneShotPolyphonic"
+});
+
+$('.answer').easyAudioEffects({
+ogg : "multimedia/select.ogg",
+mp3 : "multimedia/select.mp3",
+eventType : "click", // or "click"
+playType : "oneShotPolyphonic"
+});
+
+$('.audio').prop("volume", 0.25);
     </script>
 </body>
 
