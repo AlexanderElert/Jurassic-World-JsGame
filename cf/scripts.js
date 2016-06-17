@@ -1,6 +1,6 @@
 
 /* -DEFINIENDO VARIABLES INICIALES- */
-var addScore, answerA, answerB, answerC, answerCorrect, answerSelected, buttonPushdown, buttonPushup, checkAnswer, checkCard, combo, comboMax, confirmAble, confirmDisable, gameOver, generateCard, generateGame, generateRandom, getIndex, getValue, hideConfirm, hideCongratulations, hideGame, hideHome, imgBackground, imgquestion, minutes, printMaxcombo, printResults, printScore, printTimeleft, printTotalscore, question, question1, question2, question3, questionsAvailable, quitScore, randomCard, remove, removeSeconds, resetRadio, score, scoreBonus, scoreCalculate, scoreCheck, scoreCombomax, scoreTotal, scoreUpdate, seconds, selectquestions, showConfirm, showCongratulations, showGame, showHome, time, timeFuncionA, timeFuncionB, timeFuncionC, timeFuncionE, timeFuncionF, timeFuncionG, timeFunctions, timer, value,
+var addRecord, addScore, answerA, answerB, answerC, answerCorrect, answerSelected, buttonPushdown, buttonPushup, checkAnswer, checkCard, combo, comboMax, confirmAble, confirmDisable, gameOver, generateCard, generateGame, generateRandom, getIndex, getValue, hideConfirm, hideCongratulations, hideGame, hideHome, hideRecords, imgBackground, imgquestion, minutes, printMaxcombo, printRecord, printResults, printScore, printTimeleft, printTotalscore, question, question1, question10, question2, question3, question4, question5, question6, question7, question8, question9, questionsAvailable, quitScore, randomCard, record, recordCounter, recordsList, remove, removeBackgrounds, removeSeconds, resetRadio, score, scoreBonus, scoreCalculate, scoreCheck, scoreCombomax, scoreTotal, scoreUpdate, seconds, selectquestions, shortRecords, showConfirm, showCongratulations, showGame, showHome, showRecords, time, timeFuncionA, timeFuncionB, timeFuncionC, timeFuncionE, timeFuncionF, timeFuncionG, timeFunctions, timer, value,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 imgBackground = '';
@@ -19,7 +19,7 @@ answerCorrect = '';
 
 answerSelected = '';
 
-questionsAvailable = [1, 2, 3];
+questionsAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 value = 0;
 
@@ -40,6 +40,43 @@ time = 180;
 minutes = Math.floor(time / 60);
 
 seconds = time % 60;
+
+
+/* -DEFINIENDO LISTA DE RECORDS- */
+
+recordsList = [
+  record = {
+    name: "AlexMurió",
+    points: 13200
+  }, record = {
+    name: "AlphaProteus",
+    points: 13900
+  }, record = {
+    name: "Httpxsojin",
+    points: 13500
+  }, record = {
+    name: "KingBehemoth",
+    points: 12900
+  }, record = {
+    name: "MaritoBaracus",
+    points: 13400
+  }, record = {
+    name: "RubiusOMG",
+    points: 12700
+  }, record = {
+    name: "ElMaestrulli",
+    points: 12300
+  }, record = {
+    name: "ORION",
+    points: 11900
+  }, record = {
+    name: "PepaPig",
+    points: 11600
+  }, record = {
+    name: "Vegeta777",
+    points: 11100
+  }
+];
 
 
 /* -DEFINIENDO PREGUNTAS- */
@@ -83,8 +120,147 @@ question3 = function() {
   }
 };
 
+question4 = function() {
+  if (value === 4) {
+    imgBackground = 'card-bg-4';
+    imgquestion = 'multimedia/header-4.jpg';
+    question = '¿Cual es el nombre de la criatura marina gigantesca exhibida en el parque?';
+    answerA = 'Mosasaurus';
+    answerB = 'Megalodón';
+    answerC = 'Tylosaurus';
+    answerCorrect = answerA;
+    return resetRadio();
+  }
+};
+
+question5 = function() {
+  if (value === 5) {
+    imgBackground = 'card-bg-5';
+    imgquestion = 'multimedia/header-5.jpg';
+    question = '¿Cual fue el metodo que implementó Owen para camuflarse del Indominus-Rex?';
+    answerA = 'Cubrir su cuerpo con foleaje';
+    answerB = 'Rosearse con gasolina';
+    answerC = 'Permanecer totalmente inmóvil';
+    answerCorrect = answerB;
+    return resetRadio();
+  }
+};
+
+question6 = function() {
+  if (value === 6) {
+    imgBackground = 'card-bg-6';
+    imgquestion = 'multimedia/header-6.jpg';
+    question = '¿Cuales son los nombres de los raptores entrenados por Owen?';
+    answerA = 'Blue, Charlie, Echo, Delta';
+    answerB = 'Alfa, Beta, Omega, Zeta';
+    answerC = 'Alfa, Blue, Charlie, Delta';
+    answerCorrect = answerA;
+    return resetRadio();
+  }
+};
+
+question7 = function() {
+  if (value === 7) {
+    imgBackground = 'card-bg-7';
+    imgquestion = 'multimedia/header-7.jpg';
+    question = '¿Como se llama el vehículo redondo utilizado en las atracciones?';
+    answerA = 'Cicloesfera';
+    answerB = 'Globorotatorio';
+    answerC = 'Giroesfera';
+    answerCorrect = answerC;
+    return resetRadio();
+  }
+};
+
+question8 = function() {
+  if (value === 8) {
+    imgBackground = 'card-bg-8';
+    imgquestion = 'multimedia/header-8.jpg';
+    question = '¿Como se llama el dinosaurio volador con la cabeza parecida a la de un raptor?';
+    answerA = 'Pteranodon';
+    answerB = 'Dimorphodon';
+    answerC = 'Microceratus';
+    answerCorrect = answerB;
+    return resetRadio();
+  }
+};
+
+question9 = function() {
+  if (value === 9) {
+    imgBackground = 'card-bg-9';
+    imgquestion = 'multimedia/header-9.jpg';
+    question = '¿Por qué los agentes de contención no pudieron rastrear al Indominus-Rex?';
+    answerA = 'Por una falla electrica el sensor';
+    answerB = 'El Indominus-Rex se lo arrancó';
+    answerC = 'Se econtraba demasiado lejos de las torres de control';
+    answerCorrect = answerB;
+    return resetRadio();
+  }
+};
+
+question10 = function() {
+  if (value === 10) {
+    imgBackground = 'card-bg-10';
+    imgquestion = 'multimedia/header-10.jpg';
+    question = '¿Cual es el puesto de trabajo que ejerce Claire Dearing?';
+    answerA = 'Manager de operaciones';
+    answerB = 'Dueña de Jurassic World';
+    answerC = 'Jefe en seguridad de InGen';
+    answerCorrect = answerA;
+    return resetRadio();
+  }
+};
+
+addRecord = function() {
+  var nickIngresado, puntosObtenidos;
+  nickIngresado = prompt("ingrese su nick");
+  puntosObtenidos = 999;
+  record = {
+    name: "" + nickIngresado,
+    points: puntosObtenidos
+  };
+  shortRecords();
+  printRecordslist();
+  printRecord();
+  return recordsList.push(record);
+};
+
+shortRecords = function() {
+  return recordsList.sort(function(b, a) {
+    if (a.points > b.points) {
+      return 1;
+    }
+    if (a.points < b.points) {
+      return -1;
+    }
+    return 0;
+  });
+};
+
+recordCounter = 0;
+
+printRecord = function() {
+  var i, len, results;
+  results = [];
+  for (i = 0, len = recordsList.length; i < len; i++) {
+    record = recordsList[i];
+    $('#record-list .card ul').append("<li> <span>" + record.name + "</span> <span>" + record.points + "pts</span></li>");
+    recordCounter += 1;
+    if (recordCounter >= 11) {
+      results.push($('#record-list .card ul li:last-child').remove());
+    } else {
+      results.push(void 0);
+    }
+  }
+  return results;
+};
+
+shortRecords();
+
+printRecord();
+
 getValue = function() {
-  value = Math.floor(Math.random() * 3 + 1);
+  value = Math.floor(Math.random() * 10 + 1);
   console.log(value);
   return console.log(questionsAvailable);
 };
@@ -98,9 +274,22 @@ remove = function() {
   return questionsAvailable.splice(getIndex(), 1);
 };
 
+removeBackgrounds = function() {
+  $('#game-card-overlay').removeClass('card-bg-1');
+  $('#game-card-overlay').removeClass('card-bg-2');
+  $('#game-card-overlay').removeClass('card-bg-3');
+  $('#game-card-overlay').removeClass('card-bg-4');
+  $('#game-card-overlay').removeClass('card-bg-5');
+  $('#game-card-overlay').removeClass('card-bg-6');
+  $('#game-card-overlay').removeClass('card-bg-7');
+  $('#game-card-overlay').removeClass('card-bg-8');
+  $('#game-card-overlay').removeClass('card-bg-9');
+  return $('#game-card-overlay').removeClass('card-bg-10');
+};
+
 generateCard = function() {
   $('.question-header img').attr('src', imgquestion);
-  $('#game-card-overlay').removeClass('card-bg-1').removeClass('card-bg-2').removeClass('card-bg-3');
+  removeBackgrounds();
   $('#game-card-overlay').addClass(imgBackground);
   $('.question').html(question);
   $('.answers > label:nth-child(2) > p').html(answerA);
@@ -112,10 +301,6 @@ scoreUpdate = function() {
   $('.time-left span:first-child').html(minutes);
   $('.time-left span:last-child').html(seconds);
   return $('.score span:first-child').html(score);
-};
-
-hideCongratulations = function() {
-  return $('#congratulations-card').fadeOut(100);
 };
 
 checkCard = function() {
@@ -172,7 +357,6 @@ showConfirm = function() {
 };
 
 confirmAble = function() {
-  console.log('correcto');
   $('#confirm').prop("disabled", false);
   $('#confirm').html('Siguiente');
   $('#confirm').fadeIn(0);
@@ -224,13 +408,15 @@ printTotalscore = function() {
 showHome = function() {
   $('#overlay').fadeIn(0);
   $('#background_video').fadeIn(0);
-  return $('#main_content').fadeIn(0);
+  $('#main_content').fadeIn(0);
+  return $('#footer').fadeIn(0);
 };
 
 hideHome = function() {
   $('#overlay').fadeOut(0);
   $('#background_video').fadeOut(0);
-  return $('#main_content').fadeOut(0);
+  $('#main_content').fadeOut(0);
+  return $('#footer').fadeOut(0);
 };
 
 showGame = function() {
@@ -258,6 +444,18 @@ showCongratulations = function() {
   printTimeleft();
   printMaxcombo();
   return printTotalscore();
+};
+
+hideCongratulations = function() {
+  return $('#congratulations-card').fadeOut(300);
+};
+
+showRecords = function() {
+  return $('#record-list').fadeIn(300);
+};
+
+hideRecords = function() {
+  return $('#record-list').fadeOut(300);
 };
 
 
@@ -292,7 +490,14 @@ timer = function() {
 selectquestions = function() {
   question1();
   question2();
-  return question3();
+  question3();
+  question4();
+  question5();
+  question6();
+  question7();
+  question8();
+  question9();
+  return question10();
 };
 
 randomCard = function() {
@@ -404,6 +609,16 @@ $('#play').click(function() {
   return showGame();
 });
 
+$('#records').click(function() {
+  hideHome();
+  return showRecords();
+});
+
+$('#backhome').click(function() {
+  hideRecords();
+  return showHome();
+});
+
 $('#confirm').click(function() {
   scoreCheck();
   return checkAnswer();
@@ -431,3 +646,5 @@ $('#incorrect').mousedown(function() {
 hideGame();
 
 hideCongratulations();
+
+hideRecords();

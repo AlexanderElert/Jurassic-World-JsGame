@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <head>
@@ -18,7 +19,7 @@
         <video id="background_video" loop muted autoplay></video>
         <div id="video_cover"></div>
         <div id="overlay"></div>
-        <audio loop autoplay controls="controls" class="audio">
+        <audio loop autoplay muted controls="controls" class="audio">
             <source src="multimedia/soundtrack-2.mp3" type="audio/mpeg">
         </audio>
         <section id="main_content">
@@ -93,12 +94,12 @@
 
               <li>
                 <p>Tiempo restante:</p>
-                <span>asd</span>
+                <span></span>
               </li>
 
               <li>
                 <p>Combo máximo:</p>
-                <span>www</span>
+                <span></span>
               </li>
 
               <hr>
@@ -108,15 +109,26 @@
                 <span></span>
               </li>
             </ul>
-            <button type="button" name="retry">Reintentar</button>
-            <button type="button" name="next">Continuar</button>
+            <button type="button" name="retry" id="retry">Reintentar</button>
+            <button type="button" name="next" id="nextRecord">Continuar</button>
           </div>
         </section>
-        <div id="notification">
-          <p>
-            Respuesta incorrecta!
-          </p>
-        </div>
+        <section id="record-list">
+          <div class="card">
+            <h2>
+              - Mejores Puntajes -
+            </h2>
+
+            <p>
+              Dale un vistazo a los mejores puntajes obtenidos hasta ahora.
+              ¿Te crees capaz de superarlos y dominar todo Jurassic World?
+            </p>
+            <ul>
+
+            </ul>
+            <button type="button" name="retry" id="backhome">Volver</button>
+          </div>
+        </section>
 
     </div>
     <div id="footer">
@@ -129,10 +141,17 @@
     <script src="js/bideo.js"></script>
     <script type="text/javascript" src="js/jquery.easyaudioeffects.1.0.0.min.js"></script>
     <script type="text/javascript">
-    $('#play').easyAudioEffects({
-   ogg : "multimedia/start.ogg",
-   mp3 : "multimedia/start.mp3",
-   eventType : "click" // or "click"
+/* -EJECUTANDO EFECTOS DE SONIDO- */
+$('#play').easyAudioEffects({
+ogg : "multimedia/start.ogg",
+mp3 : "multimedia/start.mp3",
+eventType : "click" // or "click"
+});
+
+$('#records').easyAudioEffects({
+ogg : "multimedia/start.ogg",
+mp3 : "multimedia/start.mp3",
+eventType : "click" // or "click"
 });
 
 $('#confirm').easyAudioEffects({
@@ -152,6 +171,20 @@ playType : "oneShotPolyphonic"
 $('.answer').easyAudioEffects({
 ogg : "multimedia/select.ogg",
 mp3 : "multimedia/select.mp3",
+eventType : "click", // or "click"
+playType : "oneShotPolyphonic"
+});
+
+$('#record-list .card ul li').easyAudioEffects({
+ogg : "multimedia/select.ogg",
+mp3 : "multimedia/select.mp3",
+eventType : "click", // or "click"
+playType : "oneShotPolyphonic"
+});
+
+$('#backhome').easyAudioEffects({
+ogg : "multimedia/next.ogg",
+mp3 : "multimedia/next.mp3",
 eventType : "click", // or "click"
 playType : "oneShotPolyphonic"
 });

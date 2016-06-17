@@ -7,7 +7,7 @@ answerB = ''
 answerC = ''
 answerCorrect = ''
 answerSelected = ''
-questionsAvailable = [1, 2, 3]
+questionsAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 value = 0
 score = 0
 scoreBonus = 0
@@ -18,6 +18,50 @@ comboMax = 0
 time = 180
 minutes = Math.floor(time / 60)
 seconds = time % 60
+
+### -DEFINIENDO LISTA DE RECORDS- ###
+recordsList = [
+  record = {
+    name: "AlexMurió"
+    points: 13200
+  }
+  record = {
+    name: "AlphaProteus"
+    points: 13900
+  }
+  record = {
+    name: "Httpxsojin"
+    points: 13500
+  }
+  record = {
+    name: "KingBehemoth"
+    points: 12900
+  }
+  record = {
+    name: "MaritoBaracus"
+    points: 13400
+  }
+  record = {
+    name: "RubiusOMG"
+    points: 12700
+  }
+  record = {
+    name: "ElMaestrulli"
+    points: 12300
+  }
+  record = {
+    name: "ORION"
+    points: 11900
+  }
+  record = {
+    name: "PepaPig"
+    points: 11600
+  }
+  record = {
+    name: "Vegeta777"
+    points: 11100
+  }
+]
 
 ### -DEFINIENDO PREGUNTAS- ###
 question1 = ->
@@ -53,10 +97,120 @@ question3 = ->
     answerCorrect = answerC
     resetRadio()
 
+question4 = ->
+  if value == 4
+    imgBackground = 'card-bg-4'
+    imgquestion = 'multimedia/header-4.jpg'
+    question = '¿Cual es el nombre de la criatura marina gigantesca exhibida en el parque?'
+    answerA = 'Mosasaurus'
+    answerB = 'Megalodón'
+    answerC = 'Tylosaurus'
+    answerCorrect = answerA
+    resetRadio()
+
+question5 = ->
+  if value == 5
+    imgBackground = 'card-bg-5'
+    imgquestion = 'multimedia/header-5.jpg'
+    question = '¿Cual fue el metodo que implementó Owen para camuflarse del Indominus-Rex?'
+    answerA = 'Cubrir su cuerpo con foleaje'
+    answerB = 'Rosearse con gasolina'
+    answerC = 'Permanecer totalmente inmóvil'
+    answerCorrect = answerB
+    resetRadio()
+
+question6 = ->
+  if value == 6
+    imgBackground = 'card-bg-6'
+    imgquestion = 'multimedia/header-6.jpg'
+    question = '¿Cuales son los nombres de los raptores entrenados por Owen?'
+    answerA = 'Blue, Charlie, Echo, Delta'
+    answerB = 'Alfa, Beta, Omega, Zeta'
+    answerC = 'Alfa, Blue, Charlie, Delta'
+    answerCorrect = answerA
+    resetRadio()
+
+question7 = ->
+  if value == 7
+    imgBackground = 'card-bg-7'
+    imgquestion = 'multimedia/header-7.jpg'
+    question = '¿Como se llama el vehículo redondo utilizado en las atracciones?'
+    answerA = 'Cicloesfera'
+    answerB = 'Globorotatorio'
+    answerC = 'Giroesfera'
+    answerCorrect = answerC
+    resetRadio()
+
+question8 = ->
+  if value == 8
+    imgBackground = 'card-bg-8'
+    imgquestion = 'multimedia/header-8.jpg'
+    question = '¿Como se llama el dinosaurio volador con la cabeza parecida a la de un raptor?'
+    answerA = 'Pteranodon'
+    answerB = 'Dimorphodon'
+    answerC = 'Microceratus'
+    answerCorrect = answerB
+    resetRadio()
+
+question9 = ->
+  if value == 9
+    imgBackground = 'card-bg-9'
+    imgquestion = 'multimedia/header-9.jpg'
+    question = '¿Por qué los agentes de contención no pudieron rastrear al Indominus-Rex?'
+    answerA = 'Por una falla electrica el sensor'
+    answerB = 'El Indominus-Rex se lo arrancó'
+    answerC = 'Se econtraba demasiado lejos de las torres de control'
+    answerCorrect = answerB
+    resetRadio()
+
+question10 = ->
+  if value == 10
+    imgBackground = 'card-bg-10'
+    imgquestion = 'multimedia/header-10.jpg'
+    question = '¿Cual es el puesto de trabajo que ejerce Claire Dearing?'
+    answerA = 'Manager de operaciones'
+    answerB = 'Dueña de Jurassic World'
+    answerC = 'Jefe en seguridad de InGen'
+    answerCorrect = answerA
+    resetRadio()
+
 # -DEFINIENDO FUNCIONES BÁSICAS- ###
+# Armando el DOM en Records
+addRecord = ->
+  nickIngresado = prompt "ingrese su nick"
+  puntosObtenidos = 999
+  record = {
+    name: "#{nickIngresado}"
+    points: puntosObtenidos
+  }
+  shortRecords()
+  printRecordslist()
+  printRecord()
+  recordsList.push record
+
+shortRecords = ->
+  recordsList.sort (b, a) ->
+    if a.points > b.points
+      return 1
+    if a.points < b.points
+      return -1
+    0
+
+recordCounter = 0
+
+printRecord = ->
+  for record in recordsList
+    $('#record-list .card ul').append("<li> <span>#{record.name}</span> <span>#{record.points}pts</span></li>")
+    recordCounter += 1
+    if recordCounter >= 11
+      $('#record-list .card ul li:last-child').remove()
+
+shortRecords()
+printRecord()
+
 # Armado del DOM en Card
 getValue = ->
-  value = Math.floor(Math.random() * 3 + 1)
+  value = Math.floor(Math.random() * 10 + 1)
   console.log value
   console.log questionsAvailable
 
@@ -67,9 +221,22 @@ remove = ->
   getIndex()
   questionsAvailable.splice(getIndex(), 1);
 
+removeBackgrounds = ->
+  $('#game-card-overlay').removeClass('card-bg-1')
+  $('#game-card-overlay').removeClass('card-bg-2')
+  $('#game-card-overlay').removeClass('card-bg-3')
+  $('#game-card-overlay').removeClass('card-bg-4')
+  $('#game-card-overlay').removeClass('card-bg-5')
+  $('#game-card-overlay').removeClass('card-bg-6')
+  $('#game-card-overlay').removeClass('card-bg-7')
+  $('#game-card-overlay').removeClass('card-bg-8')
+  $('#game-card-overlay').removeClass('card-bg-9')
+  $('#game-card-overlay').removeClass('card-bg-10')
+
+
 generateCard = ->
   $('.question-header img').attr('src', imgquestion)
-  $('#game-card-overlay').removeClass('card-bg-1').removeClass('card-bg-2').removeClass('card-bg-3')
+  removeBackgrounds()
   $('#game-card-overlay').addClass(imgBackground)
   $('.question').html(question)
   $('.answers > label:nth-child(2) > p').html(answerA)
@@ -80,9 +247,6 @@ scoreUpdate = ->
   $('.time-left span:first-child').html(minutes)
   $('.time-left span:last-child').html(seconds)
   $('.score span:first-child').html(score)
-
-hideCongratulations = ->
-  $('#congratulations-card').fadeOut(100)
 
 # Checkeo de respuesta correcta
 checkCard = ->
@@ -127,7 +291,6 @@ showConfirm = ->
   $('#confirm').fadeIn(0)
 
 confirmAble = ->
-  console.log 'correcto'
   $('#confirm').prop( "disabled", false )
   $('#confirm').html( 'Siguiente' )
   $('#confirm').fadeIn(0)
@@ -172,11 +335,13 @@ showHome = ->
   $('#overlay').fadeIn(0)
   $('#background_video').fadeIn(0)
   $('#main_content').fadeIn(0)
+  $('#footer').fadeIn(0)
 
 hideHome = ->
   $('#overlay').fadeOut(0)
   $('#background_video').fadeOut(0)
   $('#main_content').fadeOut(0)
+  $('#footer').fadeOut(0)
 
 showGame = ->
   $('#game-card').fadeIn(700)
@@ -200,6 +365,15 @@ showCongratulations = ->
   printTimeleft()
   printMaxcombo()
   printTotalscore()
+
+hideCongratulations = ->
+  $('#congratulations-card').fadeOut(300)
+
+showRecords = ->
+  $('#record-list').fadeIn(300)
+
+hideRecords = ->
+  $('#record-list').fadeOut(300)
 
 ### -DEFINIENDO FUNCIONES COMPLEJAS- ###
 # Temporizador
@@ -227,7 +401,13 @@ selectquestions = ->
   question1()
   question2()
   question3()
-
+  question4()
+  question5()
+  question6()
+  question7()
+  question8()
+  question9()
+  question10()
 randomCard = ->
     remove()
     selectquestions()
@@ -316,6 +496,14 @@ $('#play').click ->
   hideHome()
   showGame()
 
+$('#records').click ->
+  hideHome()
+  showRecords()
+
+$('#backhome').click ->
+  hideRecords()
+  showHome()
+
 $('#confirm').click ->
   scoreCheck()
   checkAnswer()
@@ -335,3 +523,4 @@ $('#incorrect').mousedown ->
 ### -EJECUTANDO FUNCIONES INICIALES- ###
 hideGame()
 hideCongratulations()
+hideRecords()
