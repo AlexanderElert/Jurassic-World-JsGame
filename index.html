@@ -19,21 +19,21 @@
         <video id="background_video" loop muted autoplay></video>
         <div id="video_cover"></div>
         <div id="overlay"></div>
-        <audio loop autoplay muted controls="controls" class="audio">
+        <audio loop autoplay controls="controls" class="audio">
             <source src="multimedia/soundtrack-2.mp3" type="audio/mpeg">
         </audio>
         <section id="main_content">
             <div id="head">
-                <h1>Bienvenidos a<br>
+                <h1>Welcome to<br>
                   <span class="jw">JURASSIC WORLD</span></h1>
-                <p class="sub_head">Adentrate en el parque mas emocionante de todos los tiempos, demuestra tus conocimientos respondiendo las preguntas dentro del tiempo limite y participa por el sorteo de entradas para la <b style="color:rgba(252, 61, 61, 0.70);">Avant Premier</b>.</p>
-                <p class="info">(Completa el juego en menos de 3:00 minutos para ganar)</p>
+                <p class="sub_head">Delve into the most exciting theme park of all times, pit your knowledge by answering the questions within the time limit and join in the draw for <b style="color:rgba(252, 61, 61, 0.70);">3D Limited Edition Gift Sets</b>.</p>
+                <p class="info">(Complete the game in less than 3:00 minutes to win)</p>
             </div>
 
             <div id="links">
-                <p>¿Serás capaz de lograrlo?</p>
-                <a href="#play" id="play">Jugar</a>
-                <a href="#records" id="records">Ver Records</a>
+                <p>¿Can you do it?</p>
+                <a href="#play" id="play">Play</a>
+                <a href="#records" id="records">See Records</a>
             </div>
         </section>
 
@@ -65,8 +65,8 @@
           <label for="C"><p class="answer"></p></label>
           <div class="confirm-container">
 
-          <button id="confirm">Siguiente</button>
-          <button id="incorrect">Respuesta incorrecta</button>
+          <button id="confirm">Next</button>
+          <button id="incorrect">Wrong answer!</button>
 
           </div>
           </div>
@@ -80,25 +80,25 @@
             </h2>
 
             <p>
-              Has respondido todas las preguntas dentro del tiempo limite. Tus habilidades y conocimientos son dignos de un verdadero fanático de los dinosaurios!
+              You have answered all the questions within the time limit. Your skills and knowledge are worthy of a true fan of the saga!
             </p>
 
             <h3>
-              Resumen:
+              Resume:
             </h3>
             <ul>
               <li>
-                <p>Puntos obtenidos:</p>
+                <p>Points obtained:</p>
                 <span></span>
               </li>
 
               <li>
-                <p>Tiempo restante:</p>
+                <p>Time left:</p>
                 <span></span>
               </li>
 
               <li>
-                <p>Combo máximo:</p>
+                <p>Max combo:</p>
                 <span></span>
               </li>
 
@@ -109,30 +109,45 @@
                 <span></span>
               </li>
             </ul>
-            <button type="button" name="retry" id="retry">Reintentar</button>
-            <button type="button" name="next" id="nextRecord">Continuar</button>
+            <button type="button" name="retry" id="retry">Try again</button>
+            <button type="button" name="next" id="nextRecord">Continue</button>
           </div>
         </section>
-        <section id="record-list">
+
+        <section id="new-record">
           <div class="card">
             <h2>
-              - Mejores Puntajes -
+              - Adding New Record -
             </h2>
 
             <p>
-              Dale un vistazo a los mejores puntajes obtenidos hasta ahora.
-              ¿Te crees capaz de superarlos y dominar todo Jurassic World?
+              Congratulations, you've set a new record!
+              <br>
+              Enter your nickname to serve on at the best player's list.
             </p>
-            <ul>
 
-            </ul>
-            <button type="button" name="retry" id="backhome">Volver</button>
+            <input type="text" placeholder="maximum 12 characters." name="nickname">
+            <button type="button" name="next" id="nextNewrecord">Continue</button>
+          </div>
+        </section>
+
+        <section id="record-list">
+          <div class="card">
+            <h2>
+              - Highscores -
+            </h2>
+
+            <p>
+              Check out the best scores obtained so far. Do you think you can overcome them and dominate all Jurassic World?
+            </p>
+
+            <button type="button" name="retry" id="backhome">Back</button>
           </div>
         </section>
 
     </div>
     <div id="footer">
-        <p>Jurassic World™ @2016 Todos los derechos reservados. Diseñado por <a class="twitter" href="https://twitter.com/alexanderelert">Alexander Elert</a>.</p>
+        <p>Jurassic World™ @2016 All rights reserved. Designed by <a class="twitter" href="https://twitter.com/alexanderelert">Alexander Elert</a>.</p>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

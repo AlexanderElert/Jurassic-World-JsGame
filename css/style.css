@@ -130,7 +130,7 @@ text-transform:uppercase;
     font-weight: 400;
     line-height: 20px;
     width: 588px;
-    text-align: justify;
+    text-align: center;
 }
 
 #main_content .info {
@@ -290,6 +290,7 @@ text-transform:uppercase;
     margin-top: 10px !important;
     font-size: 16px;
     transition: 0.2s ease-out;
+    border-radius: 5px;
   }
 
 #game-card label:hover {
@@ -323,7 +324,7 @@ color:white;
     font-size: 25px;
     line-height: 44px;
     right: 169px;
-    border-radius: 0px 0px 5px 0px;
+    border-radius: 5px 0px 5px 0px;
 }
 
 .score {
@@ -338,7 +339,7 @@ color:white;
     font-size: 25px;
     line-height: 44px;
     left: 169px;
-    border-radius: 0px 0px 0px 5px;
+    border-radius: 0px 5px 0px 5px;
 }
 
 .score span:last-child {
@@ -355,6 +356,7 @@ color:white;
 
 .question-header img {
 width: 100%;
+border-radius: 5px;
 }
 
 p.question{
@@ -395,7 +397,7 @@ line-height: 35px;
     border-radius: 5px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.9) !important;
-    background-color: rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(255, 255, 255, 0.25) !important;
     font-weight: 800;
     transition: 0.2s ease;
     border: none !important;
@@ -623,10 +625,10 @@ background-color: transparent;
   background-color: rgba(0, 0, 0, 0.65);
   position: absolute;
   width: 500px;
-  height: 500px;
+  height: 450px;
   top: 50%;
   left: 50%;
-  margin-top: -205px;
+  margin-top: -200px;
   margin-left: -275px;
   padding: 30px 25px 25px 25px;
   border-radius: 5px;
@@ -647,6 +649,7 @@ background-color: transparent;
   position: absolute;
   margin-top: -125px;
   text-align: center;
+  margin-left: 90px;
 }
 
 #record-list .card:first-child > p {
@@ -670,6 +673,7 @@ background-color: transparent;
   padding: 0px;
   list-style-type: decimal;
   list-style-position: inside;
+  margin-top: 10px;
 }
 
 #record-list .card ul li {
@@ -724,7 +728,7 @@ margin-right:5px;
 
 #record-list button {
 font-size: 17px;
-margin: 55px 5px 0px 5px;
+margin: 0px 5px 0px 5px;
 cursor: pointer;
 font-weight: 800;
 border: none !important;
@@ -747,4 +751,180 @@ background-color: transparent;
 #record-list button:hover {
     border: 2px solid rgba(252, 61, 61, 0.70) !important;
     color: rgb(252, 61, 61);
+}
+
+/* New Record Card */
+#new-record {
+  z-index: 8888;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+}
+
+#new-record::after {
+  content: '';
+  z-index: 8888;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  -webkit-filter: blur(1px) saturate(50%);
+  background-image: url(../multimedia/new-record-bg.jpg);
+  background-size: cover;
+  background-position: right center;
+  opacity: 0.3;
+}
+
+#new-record .card {
+  z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -275px;
+    padding: 30px 25px 25px 25px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.50);
+    transform: scale(1);
+    transition: 0.6s ease-out;
+
+}
+
+#new-record .card h2 {
+  font-family: 'Jurassic-Park' !important;
+  /*color: rgba(252, 61, 61, 0.70);*/
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  font-size: 90px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  position: absolute;
+  margin-top: -125px;
+  text-align: center;
+}
+
+#new-record .card:first-child > p {
+  color: rgba(255, 255, 255, 0.9);
+text-align: justify;
+font-size: 16px;
+margin-bottom: 40px;
+}
+
+#new-record .card h3 {
+  color: rgba(252, 61, 61, 0.70);
+  text-align: left;
+  margin-bottom: 10px;
+
+}
+
+#new-record .card ul {
+  position: relative;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+
+}
+
+#new-record .card ul li {
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color:rgba(255, 255, 255, 0.9);
+}
+
+#new-record .card hr {
+    padding: 0px;
+    border: none;
+    height: 1px;
+    background-color: rgba(255,255,255,0.90);
+    margin: 10px 0 10px 0px;
+}
+
+#new-record .card ul li p {
+  display: inline-block;
+  text-align: left;
+}
+
+#new-record .card ul li span {
+  text-align: left;
+  float: right;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#new-record .card ul li:last-child p {
+color:rgba(255, 255, 255, 0.9);
+text-transform: uppercase;
+}
+
+#new-record .card ul li:last-child span {
+color: rgba(252, 61, 61, 0.70);
+font-size: 18px;
+}
+
+#new-record button {
+  font-size: 17px;
+      margin: 0px 5px 0px 5px;
+      cursor: pointer;
+      font-weight: 800;
+      border: 2px solid rgba(255, 255, 255, 0.7) !important;
+      border-radius: 61px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 25px;
+      display: inline-block;
+      margin-right: 5px;
+      -webkit-transition: 0.2s ease-out;
+      -mz-transition: 0.2s ease-out;
+      -o-transition: 0.2s ease-out;
+      transition: 0.2s ease-out;
+      background-color: transparent;
+      float: right;
+
+}
+
+#new-record button:hover {
+    border: 2px solid rgba(252, 61, 61, 0.70) !important;
+    color: rgb(252, 61, 61);
+}
+
+#new-record input {
+  width: 280px;
+  height: 14px;
+  border-radius: 25px;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  outline: 0 !important;
+  float: left;
+}
+
+#new-record input:focus {
+    outline: 0 !important;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+#new-record input:focus::-webkit-input-placeholder {
+  transition: 0.3s;
+  opacity: 0 !important;
+}
+
+#new-record input:focus::-mz-input-placeholder {
+  transition: 0.3s;
+  opacity: 0 !important;
+}
+
+#new-record input:focus::-o-input-placeholder {
+  transition: 0.3s;
+  opacity: 0 !important;
 }

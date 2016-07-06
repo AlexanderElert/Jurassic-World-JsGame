@@ -18,6 +18,7 @@ comboMax = 0
 time = 180
 minutes = Math.floor(time / 60)
 seconds = time % 60
+removeSecondstatus = "Off"
 
 ### -DEFINIENDO LISTA DE RECORDS- ###
 recordsList = [
@@ -68,10 +69,10 @@ question1 = ->
   if value == 1
     imgBackground = 'card-bg-1'
     imgquestion = 'multimedia/header-1.jpg'
-    question = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?'
-    answerA = 'Moscas, Arañas y Delfines'
-    answerB = 'Calamares, Ranas y Raptores'
-    answerC = 'Tiranosaurus-Rex, Largartijas y Camaleones'
+    question = 'Which species were used to modify the DNA of Indominus-Rex?'
+    answerA = 'Flies, spiders and Dolphins'
+    answerB = 'Squids, Frogs and Raptors'
+    answerC = 'Tiranosaurus-Rex, Geckos and chameleons'
     answerCorrect = answerB
     resetRadio()
 
@@ -79,7 +80,7 @@ question2 = ->
   if value == 2
     imgBackground = 'card-bg-2'
     imgquestion = 'multimedia/header-2.jpg'
-    question = '¿Como se llama el escritor de la novela "Parque Jurásico"?'
+    question = 'How\'s called the writer of the novel "Jurassic Park"?'
     answerA = 'Michael Crichton'
     answerB = 'Steven Spielberg'
     answerC = 'Colin Trevorrow'
@@ -90,7 +91,7 @@ question3 = ->
   if value == 3
     imgBackground = 'card-bg-3'
     imgquestion = 'multimedia/header-3.jpg'
-    question = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?'
+    question = 'How it\'s called the dinosaur who defeated the Tiranosaurus-Rex in Jurassic Park 3?'
     answerA = 'Carcharodontosaurus'
     answerB = 'Suchomimus'
     answerC = 'Spinosaurus'
@@ -101,7 +102,7 @@ question4 = ->
   if value == 4
     imgBackground = 'card-bg-4'
     imgquestion = 'multimedia/header-4.jpg'
-    question = '¿Cual es el nombre de la criatura marina gigantesca exhibida en el parque?'
+    question = 'What\'s the name of the giant sea creature exhibited in the park?'
     answerA = 'Mosasaurus'
     answerB = 'Megalodón'
     answerC = 'Tylosaurus'
@@ -112,10 +113,10 @@ question5 = ->
   if value == 5
     imgBackground = 'card-bg-5'
     imgquestion = 'multimedia/header-5.jpg'
-    question = '¿Cual fue el metodo que implementó Owen para camuflarse del Indominus-Rex?'
-    answerA = 'Cubrir su cuerpo con foleaje'
-    answerB = 'Rosearse con gasolina'
-    answerC = 'Permanecer totalmente inmóvil'
+    question = 'What\'s camouflage strategy that Owen applied to hide from the Indominus-Rex?'
+    answerA = 'He covered his body with foliage'
+    answerB = 'He sprayed his body with gasoline'
+    answerC = 'He stayed completely still'
     answerCorrect = answerB
     resetRadio()
 
@@ -123,7 +124,7 @@ question6 = ->
   if value == 6
     imgBackground = 'card-bg-6'
     imgquestion = 'multimedia/header-6.jpg'
-    question = '¿Cuales son los nombres de los raptores entrenados por Owen?'
+    question = 'What are the names of the raptors are trained by Owen?'
     answerA = 'Blue, Charlie, Echo, Delta'
     answerB = 'Alfa, Beta, Omega, Zeta'
     answerC = 'Alfa, Blue, Charlie, Delta'
@@ -134,10 +135,10 @@ question7 = ->
   if value == 7
     imgBackground = 'card-bg-7'
     imgquestion = 'multimedia/header-7.jpg'
-    question = '¿Como se llama el vehículo redondo utilizado en las atracciones?'
-    answerA = 'Cicloesfera'
-    answerB = 'Globorotatorio'
-    answerC = 'Giroesfera'
+    question = 'How it\'s called the rounded vehicle used at the attractions?'
+    answerA = 'Cyclesphere'
+    answerB = 'Rotatinglobe'
+    answerC = 'Gyrosphere'
     answerCorrect = answerC
     resetRadio()
 
@@ -145,7 +146,7 @@ question8 = ->
   if value == 8
     imgBackground = 'card-bg-8'
     imgquestion = 'multimedia/header-8.jpg'
-    question = '¿Como se llama el dinosaurio volador con la cabeza parecida a la de un raptor?'
+    question = 'How it\'s called the flying dinosaur with head like a raptor?'
     answerA = 'Pteranodon'
     answerB = 'Dimorphodon'
     answerC = 'Microceratus'
@@ -156,10 +157,10 @@ question9 = ->
   if value == 9
     imgBackground = 'card-bg-9'
     imgquestion = 'multimedia/header-9.jpg'
-    question = '¿Por qué los agentes de contención no pudieron rastrear al Indominus-Rex?'
-    answerA = 'Por una falla electrica el sensor'
-    answerB = 'El Indominus-Rex se lo arrancó'
-    answerC = 'Se econtraba demasiado lejos de las torres de control'
+    question = 'Why the security division couldn\'t track down the Indominus-Rex?'
+    answerA = 'Due to an electrical fault in the sensor'
+    answerB = 'The Indominus-Rex pull out from itself'
+    answerC = 'It was too far from the control towers'
     answerCorrect = answerB
     resetRadio()
 
@@ -167,26 +168,24 @@ question10 = ->
   if value == 10
     imgBackground = 'card-bg-10'
     imgquestion = 'multimedia/header-10.jpg'
-    question = '¿Cual es el puesto de trabajo que ejerce Claire Dearing?'
-    answerA = 'Manager de operaciones'
-    answerB = 'Dueña de Jurassic World'
-    answerC = 'Jefe en seguridad de InGen'
+    question = 'What is the job that Claire Dearing exerts?'
+    answerA = 'Operations manager'
+    answerB = 'Owner of Jurassic World'
+    answerC = 'InGen security boss'
     answerCorrect = answerA
     resetRadio()
 
 # -DEFINIENDO FUNCIONES BÁSICAS- ###
 # Armando el DOM en Records
 addRecord = ->
-  nickIngresado = prompt "ingrese su nick"
-  puntosObtenidos = 999
+  enteredNickname = $('#new-record input').val()
+  earnedPoints = scoreTotal
   record = {
-    name: "#{nickIngresado}"
-    points: puntosObtenidos
+    name: "#{enteredNickname}"
+    points: earnedPoints
   }
-  shortRecords()
-  printRecordslist()
-  printRecord()
   recordsList.push record
+
 
 shortRecords = ->
   recordsList.sort (b, a) ->
@@ -199,20 +198,18 @@ shortRecords = ->
 recordCounter = 0
 
 printRecord = ->
+  $('#record-list .card p ul').remove()
+  $('#record-list .card p').append("<ul></ul>")
   for record in recordsList
-    $('#record-list .card ul').append("<li> <span>#{record.name}</span> <span>#{record.points}pts</span></li>")
+    $('#record-list .card p ul').append("<li> <span>#{record.name}</span> <span>#{record.points}pts</span></li>")
     recordCounter += 1
     if recordCounter >= 11
       $('#record-list .card ul li:last-child').remove()
-
-shortRecords()
-printRecord()
+    recordCounter = 0
 
 # Armado del DOM en Card
 getValue = ->
   value = Math.floor(Math.random() * 10 + 1)
-  console.log value
-  console.log questionsAvailable
 
 getIndex = ->
   questionsAvailable.indexOf(value)
@@ -266,12 +263,10 @@ addScore = ->
   combo += 1
   if combo >= comboMax
     comboMax = combo
-  console.log 'combo Maximo =',comboMax
 
 quitScore = ->
   score -= 500
   combo = 0
-  console.log 'se quitaron 500pts por errar la resp'
 
 scoreCalculate = ->
   scoreBonus = (minutes * 1200) + (seconds * 20)
@@ -281,7 +276,6 @@ scoreCalculate = ->
 resetRadio = ->
   $('#game-card input[type=radio]').prop( "checked", false )
   answerSelected = ''
-  console.log 'se resetearon los input checkeados y el valor correcto de las respuestas'
 
 hideConfirm = ->
   $('#confirm').fadeOut(0)
@@ -292,14 +286,13 @@ showConfirm = ->
 
 confirmAble = ->
   $('#confirm').prop( "disabled", false )
-  $('#confirm').html( 'Siguiente' )
+  $('#confirm').html( 'Next' )
   $('#confirm').fadeIn(0)
   showConfirm()
 
 confirmDisable = ->
-  console.log 'respuesta incorrecta'
   $('#confirm').prop( "disabled", true )
-  $('#confirm').html( 'Respuesta incorrecta' )
+  $('#confirm').html( 'Wrong answer' )
   hideConfirm()
 
 buttonPushdown = ->
@@ -375,6 +368,12 @@ showRecords = ->
 hideRecords = ->
   $('#record-list').fadeOut(300)
 
+showNewrecord = ->
+  $('#new-record').fadeIn(300)
+
+hideNewrecord = ->
+  $('#new-record').fadeOut(300)
+
 ### -DEFINIENDO FUNCIONES COMPLEJAS- ###
 # Temporizador
 timeFunctions = ->
@@ -387,14 +386,16 @@ timeFunctions = ->
 
 removeSeconds = ->
   timeFunctions()
+  removeSecondstatus = "On"
   setTimeout ->
     removeSeconds()
   , 1000
 
 timer = ->
-  loop
-    removeSeconds()
-    break
+  if removeSecondstatus == "Off"
+    loop
+      removeSeconds()
+      break
 
 # Generar Carta
 selectquestions = ->
@@ -420,7 +421,6 @@ generateRandom = ->
     printResults()
   else if value in questionsAvailable
     randomCard()
-    console.log questionsAvailable
   else
     generateRandom()
 
@@ -431,6 +431,12 @@ generateGame = ->
 
 ### -FUNCIONES COMPUESTAS- ###
 # Configuración del tiempo
+
+timeLeftzero = ->
+  $('.time-left span:first-child').html('00')
+  $('.time-left span:nth-child(2)').html(':')
+  $('.time-left span:last-child').html('00')
+
 timeFuncionA = ->
   if seconds >= 60
     seconds -= 59
@@ -445,9 +451,7 @@ timeFuncionB = ->
 
 timeFuncionC = ->
   if seconds <= 0 and minutes <= 0
-    $('.time-left span:first-child').html('')
-    $('.time-left span:nth-child(2)').html('Agotado')
-    $('.time-left span:last-child').html('')
+    timeLeftzero()
     gameOver()
 
 timeFuncionE = ->
@@ -491,13 +495,20 @@ checkAnswer = ->
 
 ### -DEFINIENDO FUNCIONES DE INTERACCIÓN- ###
 $('#play').click ->
+  timeLeftzero()
+  time = 180
+  resetValues()
+  hideCongratulations()
   generateGame()
   timer()
   hideHome()
   showGame()
 
+
 $('#records').click ->
   hideHome()
+  shortRecords()
+  printRecord()
   showRecords()
 
 $('#backhome').click ->
@@ -520,7 +531,61 @@ $('#incorrect').mouseup ->
 $('#incorrect').mousedown ->
   buttonPushdown()
 
+$('#retry').click ->
+  hideCongratulations()
+  hideHome()
+  generateGame()
+  timer()
+  showGame()
+
+$('#nextRecord').click ->
+  ifNewrecord()
+  hideCongratulations()
+  hideGame()
+
+$('#nextNewrecord').click ->
+  addNewrecord()
+  reset()
+
+
 ### -EJECUTANDO FUNCIONES INICIALES- ###
 hideGame()
 hideCongratulations()
 hideRecords()
+hideNewrecord()
+
+ifNewrecord = ->
+  shortRecords()
+  lowerRecord = recordsList[9].points
+  if scoreTotal >= lowerRecord
+    recordsList.splice(9,1)
+    showNewrecord()
+  else
+    hideCongratulations()
+    showHome()
+
+addNewrecord = ->
+  addRecord()
+  shortRecords()
+  showRecords()
+  hideNewrecord()
+  printRecord()
+
+resetValues = ->
+  minutes = Math.floor(time / 60)
+  seconds = time % 60
+  questionsAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  value = 0
+  score = 0
+  scoreBonus = 0
+  scoreCombomax = 0
+  scoreTotal = 0
+  combo = 0
+  comboMax = 0
+
+reset = ->
+  time = 0
+  resetValues()
+  hideGame()
+  hideCongratulations()
+  hideNewrecord()

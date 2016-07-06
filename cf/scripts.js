@@ -1,6 +1,6 @@
 
 /* -DEFINIENDO VARIABLES INICIALES- */
-var addRecord, addScore, answerA, answerB, answerC, answerCorrect, answerSelected, buttonPushdown, buttonPushup, checkAnswer, checkCard, combo, comboMax, confirmAble, confirmDisable, gameOver, generateCard, generateGame, generateRandom, getIndex, getValue, hideConfirm, hideCongratulations, hideGame, hideHome, hideRecords, imgBackground, imgquestion, minutes, printMaxcombo, printRecord, printResults, printScore, printTimeleft, printTotalscore, question, question1, question10, question2, question3, question4, question5, question6, question7, question8, question9, questionsAvailable, quitScore, randomCard, record, recordCounter, recordsList, remove, removeBackgrounds, removeSeconds, resetRadio, score, scoreBonus, scoreCalculate, scoreCheck, scoreCombomax, scoreTotal, scoreUpdate, seconds, selectquestions, shortRecords, showConfirm, showCongratulations, showGame, showHome, showRecords, time, timeFuncionA, timeFuncionB, timeFuncionC, timeFuncionE, timeFuncionF, timeFuncionG, timeFunctions, timer, value,
+var addNewrecord, addRecord, addScore, answerA, answerB, answerC, answerCorrect, answerSelected, buttonPushdown, buttonPushup, checkAnswer, checkCard, combo, comboMax, confirmAble, confirmDisable, gameOver, generateCard, generateGame, generateRandom, getIndex, getValue, hideConfirm, hideCongratulations, hideGame, hideHome, hideNewrecord, hideRecords, ifNewrecord, imgBackground, imgquestion, minutes, printMaxcombo, printRecord, printResults, printScore, printTimeleft, printTotalscore, question, question1, question10, question2, question3, question4, question5, question6, question7, question8, question9, questionsAvailable, quitScore, randomCard, record, recordCounter, recordsList, remove, removeBackgrounds, removeSeconds, removeSecondstatus, reset, resetRadio, resetValues, score, scoreBonus, scoreCalculate, scoreCheck, scoreCombomax, scoreTotal, scoreUpdate, seconds, selectquestions, shortRecords, showConfirm, showCongratulations, showGame, showHome, showNewrecord, showRecords, time, timeFuncionA, timeFuncionB, timeFuncionC, timeFuncionE, timeFuncionF, timeFuncionG, timeFunctions, timeLeftzero, timer, value,
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 imgBackground = '';
@@ -40,6 +40,8 @@ time = 180;
 minutes = Math.floor(time / 60);
 
 seconds = time % 60;
+
+removeSecondstatus = "Off";
 
 
 /* -DEFINIENDO LISTA DE RECORDS- */
@@ -85,10 +87,10 @@ question1 = function() {
   if (value === 1) {
     imgBackground = 'card-bg-1';
     imgquestion = 'multimedia/header-1.jpg';
-    question = '¿Cuales de estas especies fueron utilizadas para modificar el ADN del Indominus-Rex?';
-    answerA = 'Moscas, Arañas y Delfines';
-    answerB = 'Calamares, Ranas y Raptores';
-    answerC = 'Tiranosaurus-Rex, Largartijas y Camaleones';
+    question = 'Which species were used to modify the DNA of Indominus-Rex?';
+    answerA = 'Flies, spiders and Dolphins';
+    answerB = 'Squids, Frogs and Raptors';
+    answerC = 'Tiranosaurus-Rex, Geckos and chameleons';
     answerCorrect = answerB;
     return resetRadio();
   }
@@ -98,7 +100,7 @@ question2 = function() {
   if (value === 2) {
     imgBackground = 'card-bg-2';
     imgquestion = 'multimedia/header-2.jpg';
-    question = '¿Como se llama el escritor de la novela "Parque Jurásico"?';
+    question = 'How\'s called the writer of the novel "Jurassic Park"?';
     answerA = 'Michael Crichton';
     answerB = 'Steven Spielberg';
     answerC = 'Colin Trevorrow';
@@ -111,7 +113,7 @@ question3 = function() {
   if (value === 3) {
     imgBackground = 'card-bg-3';
     imgquestion = 'multimedia/header-3.jpg';
-    question = '¿Que dinosaurio derrota al T-Rex en Jurassic Park 3?';
+    question = 'How it\'s called the dinosaur who defeated the Tiranosaurus-Rex in Jurassic Park 3?';
     answerA = 'Carcharodontosaurus';
     answerB = 'Suchomimus';
     answerC = 'Spinosaurus';
@@ -124,7 +126,7 @@ question4 = function() {
   if (value === 4) {
     imgBackground = 'card-bg-4';
     imgquestion = 'multimedia/header-4.jpg';
-    question = '¿Cual es el nombre de la criatura marina gigantesca exhibida en el parque?';
+    question = 'What\'s the name of the giant sea creature exhibited in the park?';
     answerA = 'Mosasaurus';
     answerB = 'Megalodón';
     answerC = 'Tylosaurus';
@@ -137,10 +139,10 @@ question5 = function() {
   if (value === 5) {
     imgBackground = 'card-bg-5';
     imgquestion = 'multimedia/header-5.jpg';
-    question = '¿Cual fue el metodo que implementó Owen para camuflarse del Indominus-Rex?';
-    answerA = 'Cubrir su cuerpo con foleaje';
-    answerB = 'Rosearse con gasolina';
-    answerC = 'Permanecer totalmente inmóvil';
+    question = 'What\'s camouflage strategy that Owen applied to hide from the Indominus-Rex?';
+    answerA = 'He covered his body with foliage';
+    answerB = 'He sprayed his body with gasoline';
+    answerC = 'He stayed completely still';
     answerCorrect = answerB;
     return resetRadio();
   }
@@ -150,7 +152,7 @@ question6 = function() {
   if (value === 6) {
     imgBackground = 'card-bg-6';
     imgquestion = 'multimedia/header-6.jpg';
-    question = '¿Cuales son los nombres de los raptores entrenados por Owen?';
+    question = 'What are the names of the raptors are trained by Owen?';
     answerA = 'Blue, Charlie, Echo, Delta';
     answerB = 'Alfa, Beta, Omega, Zeta';
     answerC = 'Alfa, Blue, Charlie, Delta';
@@ -163,10 +165,10 @@ question7 = function() {
   if (value === 7) {
     imgBackground = 'card-bg-7';
     imgquestion = 'multimedia/header-7.jpg';
-    question = '¿Como se llama el vehículo redondo utilizado en las atracciones?';
-    answerA = 'Cicloesfera';
-    answerB = 'Globorotatorio';
-    answerC = 'Giroesfera';
+    question = 'How it\'s called the rounded vehicle used at the attractions?';
+    answerA = 'Cyclesphere';
+    answerB = 'Rotatinglobe';
+    answerC = 'Gyrosphere';
     answerCorrect = answerC;
     return resetRadio();
   }
@@ -176,7 +178,7 @@ question8 = function() {
   if (value === 8) {
     imgBackground = 'card-bg-8';
     imgquestion = 'multimedia/header-8.jpg';
-    question = '¿Como se llama el dinosaurio volador con la cabeza parecida a la de un raptor?';
+    question = 'How it\'s called the flying dinosaur with head like a raptor?';
     answerA = 'Pteranodon';
     answerB = 'Dimorphodon';
     answerC = 'Microceratus';
@@ -189,10 +191,10 @@ question9 = function() {
   if (value === 9) {
     imgBackground = 'card-bg-9';
     imgquestion = 'multimedia/header-9.jpg';
-    question = '¿Por qué los agentes de contención no pudieron rastrear al Indominus-Rex?';
-    answerA = 'Por una falla electrica el sensor';
-    answerB = 'El Indominus-Rex se lo arrancó';
-    answerC = 'Se econtraba demasiado lejos de las torres de control';
+    question = 'Why the security division couldn\'t track down the Indominus-Rex?';
+    answerA = 'Due to an electrical fault in the sensor';
+    answerB = 'The Indominus-Rex pull out from itself';
+    answerC = 'It was too far from the control towers';
     answerCorrect = answerB;
     return resetRadio();
   }
@@ -202,26 +204,23 @@ question10 = function() {
   if (value === 10) {
     imgBackground = 'card-bg-10';
     imgquestion = 'multimedia/header-10.jpg';
-    question = '¿Cual es el puesto de trabajo que ejerce Claire Dearing?';
-    answerA = 'Manager de operaciones';
-    answerB = 'Dueña de Jurassic World';
-    answerC = 'Jefe en seguridad de InGen';
+    question = 'What is the job that Claire Dearing exerts?';
+    answerA = 'Operations manager';
+    answerB = 'Owner of Jurassic World';
+    answerC = 'InGen security boss';
     answerCorrect = answerA;
     return resetRadio();
   }
 };
 
 addRecord = function() {
-  var nickIngresado, puntosObtenidos;
-  nickIngresado = prompt("ingrese su nick");
-  puntosObtenidos = 999;
+  var earnedPoints, enteredNickname;
+  enteredNickname = $('#new-record input').val();
+  earnedPoints = scoreTotal;
   record = {
-    name: "" + nickIngresado,
-    points: puntosObtenidos
+    name: "" + enteredNickname,
+    points: earnedPoints
   };
-  shortRecords();
-  printRecordslist();
-  printRecord();
   return recordsList.push(record);
 };
 
@@ -241,28 +240,23 @@ recordCounter = 0;
 
 printRecord = function() {
   var i, len, results;
+  $('#record-list .card p ul').remove();
+  $('#record-list .card p').append("<ul></ul>");
   results = [];
   for (i = 0, len = recordsList.length; i < len; i++) {
     record = recordsList[i];
-    $('#record-list .card ul').append("<li> <span>" + record.name + "</span> <span>" + record.points + "pts</span></li>");
+    $('#record-list .card p ul').append("<li> <span>" + record.name + "</span> <span>" + record.points + "pts</span></li>");
     recordCounter += 1;
     if (recordCounter >= 11) {
-      results.push($('#record-list .card ul li:last-child').remove());
-    } else {
-      results.push(void 0);
+      $('#record-list .card ul li:last-child').remove();
     }
+    results.push(recordCounter = 0);
   }
   return results;
 };
 
-shortRecords();
-
-printRecord();
-
 getValue = function() {
-  value = Math.floor(Math.random() * 10 + 1);
-  console.log(value);
-  return console.log(questionsAvailable);
+  return value = Math.floor(Math.random() * 10 + 1);
 };
 
 getIndex = function() {
@@ -323,15 +317,13 @@ addScore = function() {
   score += 1000;
   combo += 1;
   if (combo >= comboMax) {
-    comboMax = combo;
+    return comboMax = combo;
   }
-  return console.log('combo Maximo =', comboMax);
 };
 
 quitScore = function() {
   score -= 500;
-  combo = 0;
-  return console.log('se quitaron 500pts por errar la resp');
+  return combo = 0;
 };
 
 scoreCalculate = function() {
@@ -342,8 +334,7 @@ scoreCalculate = function() {
 
 resetRadio = function() {
   $('#game-card input[type=radio]').prop("checked", false);
-  answerSelected = '';
-  return console.log('se resetearon los input checkeados y el valor correcto de las respuestas');
+  return answerSelected = '';
 };
 
 hideConfirm = function() {
@@ -358,15 +349,14 @@ showConfirm = function() {
 
 confirmAble = function() {
   $('#confirm').prop("disabled", false);
-  $('#confirm').html('Siguiente');
+  $('#confirm').html('Next');
   $('#confirm').fadeIn(0);
   return showConfirm();
 };
 
 confirmDisable = function() {
-  console.log('respuesta incorrecta');
   $('#confirm').prop("disabled", true);
-  $('#confirm').html('Respuesta incorrecta');
+  $('#confirm').html('Wrong answer');
   return hideConfirm();
 };
 
@@ -458,6 +448,14 @@ hideRecords = function() {
   return $('#record-list').fadeOut(300);
 };
 
+showNewrecord = function() {
+  return $('#new-record').fadeIn(300);
+};
+
+hideNewrecord = function() {
+  return $('#new-record').fadeOut(300);
+};
+
 
 /* -DEFINIENDO FUNCIONES COMPLEJAS- */
 
@@ -472,6 +470,7 @@ timeFunctions = function() {
 
 removeSeconds = function() {
   timeFunctions();
+  removeSecondstatus = "On";
   return setTimeout(function() {
     return removeSeconds();
   }, 1000);
@@ -479,12 +478,14 @@ removeSeconds = function() {
 
 timer = function() {
   var results;
-  results = [];
-  while (true) {
-    removeSeconds();
-    break;
+  if (removeSecondstatus === "Off") {
+    results = [];
+    while (true) {
+      removeSeconds();
+      break;
+    }
+    return results;
   }
-  return results;
 };
 
 selectquestions = function() {
@@ -512,8 +513,7 @@ generateRandom = function() {
     hideGame();
     return printResults();
   } else if (indexOf.call(questionsAvailable, value) >= 0) {
-    randomCard();
-    return console.log(questionsAvailable);
+    return randomCard();
   } else {
     return generateRandom();
   }
@@ -527,6 +527,12 @@ generateGame = function() {
 
 
 /* -FUNCIONES COMPUESTAS- */
+
+timeLeftzero = function() {
+  $('.time-left span:first-child').html('00');
+  $('.time-left span:nth-child(2)').html(':');
+  return $('.time-left span:last-child').html('00');
+};
 
 timeFuncionA = function() {
   if (seconds >= 60) {
@@ -546,9 +552,7 @@ timeFuncionB = function() {
 
 timeFuncionC = function() {
   if (seconds <= 0 && minutes <= 0) {
-    $('.time-left span:first-child').html('');
-    $('.time-left span:nth-child(2)').html('Agotado');
-    $('.time-left span:last-child').html('');
+    timeLeftzero();
     return gameOver();
   }
 };
@@ -603,6 +607,10 @@ checkAnswer = function() {
 /* -DEFINIENDO FUNCIONES DE INTERACCIÓN- */
 
 $('#play').click(function() {
+  timeLeftzero();
+  time = 180;
+  resetValues();
+  hideCongratulations();
   generateGame();
   timer();
   hideHome();
@@ -611,6 +619,8 @@ $('#play').click(function() {
 
 $('#records').click(function() {
   hideHome();
+  shortRecords();
+  printRecord();
   return showRecords();
 });
 
@@ -640,6 +650,25 @@ $('#incorrect').mousedown(function() {
   return buttonPushdown();
 });
 
+$('#retry').click(function() {
+  hideCongratulations();
+  hideHome();
+  generateGame();
+  timer();
+  return showGame();
+});
+
+$('#nextRecord').click(function() {
+  ifNewrecord();
+  hideCongratulations();
+  return hideGame();
+});
+
+$('#nextNewrecord').click(function() {
+  addNewrecord();
+  return reset();
+});
+
 
 /* -EJECUTANDO FUNCIONES INICIALES- */
 
@@ -648,3 +677,47 @@ hideGame();
 hideCongratulations();
 
 hideRecords();
+
+hideNewrecord();
+
+ifNewrecord = function() {
+  var lowerRecord;
+  shortRecords();
+  lowerRecord = recordsList[9].points;
+  if (scoreTotal >= lowerRecord) {
+    recordsList.splice(9, 1);
+    return showNewrecord();
+  } else {
+    hideCongratulations();
+    return showHome();
+  }
+};
+
+addNewrecord = function() {
+  addRecord();
+  shortRecords();
+  showRecords();
+  hideNewrecord();
+  return printRecord();
+};
+
+resetValues = function() {
+  minutes = Math.floor(time / 60);
+  seconds = time % 60;
+  questionsAvailable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  value = 0;
+  score = 0;
+  scoreBonus = 0;
+  scoreCombomax = 0;
+  scoreTotal = 0;
+  combo = 0;
+  return comboMax = 0;
+};
+
+reset = function() {
+  time = 0;
+  resetValues();
+  hideGame();
+  hideCongratulations();
+  return hideNewrecord();
+};
