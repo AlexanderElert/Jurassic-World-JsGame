@@ -113,7 +113,7 @@ question5 = ->
   if value == 5
     imgBackground = 'card-bg-5'
     imgquestion = 'multimedia/header-5.jpg'
-    question = 'What\'s camouflage strategy that Owen applied to hide from the Indominus-Rex?'
+    question = 'What\'s strategy that Owen applied to hide himself from the Indominus-Rex?'
     answerA = 'He covered his body with foliage'
     answerB = 'He sprayed his body with gasoline'
     answerC = 'He stayed completely still'
@@ -124,10 +124,10 @@ question6 = ->
   if value == 6
     imgBackground = 'card-bg-6'
     imgquestion = 'multimedia/header-6.jpg'
-    question = 'What are the names of the raptors are trained by Owen?'
-    answerA = 'Blue, Charlie, Echo, Delta'
-    answerB = 'Alfa, Beta, Omega, Zeta'
-    answerC = 'Alfa, Blue, Charlie, Delta'
+    question = 'What are the names of the raptors trained by Owen?'
+    answerA = 'Blue, Charlie, Echo and Delta'
+    answerB = 'Alfa, Beta, Omega and Zeta'
+    answerC = 'Alfa, Blue, Charlie and Delta'
     answerCorrect = answerA
     resetRadio()
 
@@ -146,7 +146,7 @@ question8 = ->
   if value == 8
     imgBackground = 'card-bg-8'
     imgquestion = 'multimedia/header-8.jpg'
-    question = 'How it\'s called the flying dinosaur with head like a raptor?'
+    question = 'How it\'s called the flying dinosaur with a head like a raptor?'
     answerA = 'Pteranodon'
     answerB = 'Dimorphodon'
     answerC = 'Microceratus'
@@ -159,7 +159,7 @@ question9 = ->
     imgquestion = 'multimedia/header-9.jpg'
     question = 'Why the security division couldn\'t track down the Indominus-Rex?'
     answerA = 'Due to an electrical fault in the sensor'
-    answerB = 'The Indominus-Rex pull out from itself'
+    answerB = 'The Indominus-Rex pulled out from itself'
     answerC = 'It was too far from the control towers'
     answerCorrect = answerB
     resetRadio()
@@ -168,7 +168,7 @@ question10 = ->
   if value == 10
     imgBackground = 'card-bg-10'
     imgquestion = 'multimedia/header-10.jpg'
-    question = 'What is the job that Claire Dearing exerts?'
+    question = 'What\'s Claire\'s Dearing job?'
     answerA = 'Operations manager'
     answerB = 'Owner of Jurassic World'
     answerC = 'InGen security boss'
